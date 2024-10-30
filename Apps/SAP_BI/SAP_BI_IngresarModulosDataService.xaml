@@ -1,0 +1,791 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="BCP_IngresarModuloAntiguoTelecredito" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ucas="clr-namespace:UiPath.Core.Activities.SAP;assembly=UiPath.UiAutomation.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_BooEntryModule" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_StrExceptionMessage" Type="OutArgument(x:String)" />
+    <x:Property Name="in_vIntContadorExec" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_vStrNombreJob1" Type="InArgument(x:String)" />
+    <x:Property Name="in_vStrNombreJob2" Type="InArgument(x:String)" />
+    <x:Property Name="in_vIntTiempoEsperaJob" Type="InArgument(x:TimeSpan)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1046,13950</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>BCP_IngresarModuloAntiguoTelecredito_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Core.Activities.SAP</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="SAP_BI_IngresarModulosDataService" sap:VirtualizedContainerService.HintSize="1056,13885" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="vSrErrorJob" />
+      <Variable x:TypeArguments="x:Boolean" Name="vBooDownloadedFileExists" />
+      <Variable x:TypeArguments="x:String" Name="vStrCompletar" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="SAP_BI_IngresarModulosDataService" sap:VirtualizedContainerService.HintSize="994,13797" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="956,13159" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="894,124" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Ingresar Módulo Data Services&quot;]" />
+          <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Data Services Management Console" sap:VirtualizedContainerService.HintSize="894,12947" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="50578787-3f80-485e-9440-4c4ad5cac324" Version="V2" WindowResize="Maximize">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="860,12707" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="798,57" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Administrador" sap:VirtualizedContainerService.HintSize="798,189" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/launch/launch.action" CvTextArgument="Administrator" CvType="Text" DesignTimeRectangle="149, 353, 79, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Administrator'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' type='' class='standardTitle' check:text='Administrator' /&gt;" Guid="aa327af4-a504-4d17-aa11-d61a3a69edb8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAASCAYAAAAntuLJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHZSURBVFhH7ZW9ccMwDIU1XkZxqQ28gxoXHkALqFDvAXwuNYFduE+KOAh/ABKAKNF2qEvDd4eCNAg8foTOzefXN9QoE83j8QM1ykQDVcVUYRbUHOb1BO3uCB+7HoYr7iU1QWfzDhOun9Udhr05tz/BDXcWhV7a8Y4bK7K5L3shWU8DXHD1rmYwb2NvQFqYuUu8C3ML/c3L5WDvWxwmTc0AXWp6wtRa4yaHXcA/gpnmcWCPMfl6bk1m1WSefX43xtrhEfVk8v4murPdxHq0b+vSOePR5WMvD43C++HDw79Gkcs5kF9T2/3GHlDCZOYDnPCpk2mEgkUlTLp4vKC7MEFwuWmYVEdMiYApz8lpUpNJ/TQEWgs/88lcra38cgmYAqC4SGKtmmj4y4bSMKnusof4QAKSUxpm9BrlfWFg/io8I+EJ/fqvQorBVJfU641hkrnVB6WpoAhe8zB9XcqR+cLr4tlXYGqjLOafqtU/wAzCeuG3HEw9KCswdS2jl2H6ghGGkwCIhqgpwcem28NUlxTncjClH98j5kuvGbh5mHggvBxJAaQ8V3zh33wzmHHt+od6Xr6fDdMzAVOe7aFNeLBBPmI9E6zPEzCrSqjCLKgKs6AqzIKqMIsJ4BfeSVgAwewx6wAAAABJRU5ErkJggg==" InformativeScreenshot="84521463e66b9a97d1dd16c62ba8e170.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="798,189" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://azbidsprd:8080/DataServices/servlet/AwHome" CvTextArgument="DSREPOPD43" CvType="Text" DesignTimeRectangle="256, 360, 74, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'DSREPOPD43'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' tag='A' type='' class='' check:text='DSREPOPD43' /&gt;" Guid="ae312761-fb1f-4a00-b980-7aaba54fa023" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAQCAYAAAC4LkmaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGqSURBVFhH7ZUxsoMwDEQ5DSfiVNyAW3Ab2p8ZJkWadDQpFEuyjSQLgvmtmdkCy1qvXsykm6YJmurVwN1Ut20faKpXA3dTO7jlCX33B51U/4RFbN7mVdeHV6y9YezF+tV69J+HstaP79jL0nseMC5HNVbut5lROZcW+Yia9LV5DDgnUIb3giEYDHOq8zsbMhhlrvycupANbLPoHEEEw9SP+mnvCnOqpR/RwkuA0zq+pzMdNqfgGE5cc+tJHhheY9CV4GTvwbmy57S/ABdEnnIN51xhHB8lUFSx/yc4OfwHFjR2r64DRvlxPfVmHQ0ue73BUeJG1PeLCxHesR9npPkMOPIu5q0Et4s/UzTkmg9mP8wBK5TCub1XwVX1C3BYj7A8cKwy//VPNa/t2g8yxoXXBXBu4CA3l+457ffAkSevedA9L3vG9T8HCqDrCI5hOGBU4H+AC1I5UCbLaX8BjrN4+9WNw768h78w+eUZcMFQSoYNImNZz8Y+GBqIQsewspfEw/8Ch9JnOz/wUT+BS31RB3sVuCDOz7Kz7eCaqtTA3VQDd1MdtOfGA/AFEb+W9TPKJksAAAAASUVORK5CYII=" InformativeScreenshot="db4c5b10a6f0638b2b3c17a45c0fd8f2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="798,189" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory?REPOSITORY_NAME=DSREPO43&amp;SHOWREPO=2&amp;ACTIVE_VIEW=Batch+Job+Status" CvElementArea="337, 239, 136, 22" CvTextArea="347, 244, 115, 13" CvTextArgument="Batch Job Configuration" CvType="Button" DesignTimeRectangle="348, 244, 114, 12" DesignTimeScaleFactor="1" FriendlyName="'Batch Job Configuration'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Batch Job Configuration' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Batch Job Configuration' tag='A' type='' class='unselectedTab' check:text='Batch Job Configuration' /&gt;" Guid="f1f317cc-3777-45ae-a73f-b1a35e558631" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHYAAAAQCAYAAADDCotWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ1SURBVFhH7VY5bsMwEMxf/Qh1qdypMpDarTp/QLWBdGr9gJT5A0PuQc7ykBnHQAxBxQAOuZyZ3SEdv319fbsd28Me7EaxB7tR7MFuFCnY5eKGw9EdEMPFLVBc4urGw8lNS20v4Oam4eiG6VbZq2A+e92zm2t7BOYb59pehqyfbg8VzKPwvH90zOQPIM/c/zKd3GG81us6kAWLIXUMsTiT45+CJZ6yl8fCvXd5n4i7/fejP1gSTS9gnHmf/pZbHG827SeOYTzH17MaStYY3Vo5x6GIJ89ndSyCjyLE5eZmD/47hKVeRS9oD2c3mp6gx1BHNfJi4zxO3o++LuZVT+nV8eWgOtJDXg/iBE/+jHmxOHtcK/yybsDqVzEOZ56F0COK4mUgcRkSrUMDIkrnMgMGyIGf48Asn61R2OGWYA7tLXoiLr3YyMGhxB5JG/fFUwywFSzMc7n6S8Y1Bb/0U50xem/6Zdx9sebmE5kEn4mmJvR8hSMOBmsAtcZkj1/hZ+YJhiJ1qtkONjujlxC0LUc2+ODf1JYBtoK1nliD5wn8ef+qKefMetUvYyVYNCYmRCCuPyPYsKbnao1JXX+wra9iCfAVgqXzDf68f9XMtYyHXwWLoeBB/kzkeAaF4jpySA2YTLrQjO4b4zoY0a7WAGh9vRf1FDUNF9dUB0/aGJR4ogBLnWawpodyhjFAkwvwN/0yVv/HRnEPEqJ1LzLZBrUu1dSHaBoC4Dk01+Tr+TFGjXNNOq/74psgw2kOqhas1ofz+OPJzqn1o8roj5ekpRn4M8QjnKYXs9YT7I4HkV3eF8Ee7EPAF++hr/iFsAe7UezBbhLf7gd0x2llfvzNHQAAAABJRU5ErkJggg==" InformativeScreenshot="de1d22a845ccecbb140f272d602631e8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <ucas:SelectMenuItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" DisplayName="Select Menu Item Public Folders" sap:VirtualizedContainerService.HintSize="798,192" sap2010:WorkflowViewState.IdRef="SelectMenuItem_3" Item="QUIEBRE_COMERCIAL">
+                    <ucas:SelectMenuItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="50">
+                        <x:String>CAPACITACION</x:String>
+                        <x:String>CAPITAL_HUMANO</x:String>
+                        <x:String>COMERCIAL</x:String>
+                        <x:String>COMPRAS</x:String>
+                        <x:String>CONTABILIDAD</x:String>
+                        <x:String>COSTOS</x:String>
+                        <x:String>DATAMINING</x:String>
+                        <x:String>demo</x:String>
+                        <x:String>DPTOOLS</x:String>
+                        <x:String>DRGP</x:String>
+                        <x:String>EPM</x:String>
+                        <x:String>EPM_ANDREA</x:String>
+                        <x:String>EPM_CONSOLIDACION</x:String>
+                        <x:String>EPM_MARCOS</x:String>
+                        <x:String>EPM_PLANIFICACION</x:String>
+                        <x:String>EPM_QA</x:String>
+                        <x:String>EPM_VARIACION_COSTO</x:String>
+                        <x:String>ESTRATEGIA</x:String>
+                        <x:String>FASE2LAKEHOUSE</x:String>
+                        <x:String>FORMULACIONES</x:String>
+                        <x:String>FROG</x:String>
+                        <x:String>GENERALES</x:String>
+                        <x:String>ICG</x:String>
+                        <x:String>INDICADORES_CMI</x:String>
+                        <x:String>INDS_MANUFACTURA</x:String>
+                        <x:String>INVENTARIOS</x:String>
+                        <x:String>ISOTOOLS</x:String>
+                        <x:String>JMH_CAPACITACION</x:String>
+                        <x:String>LOGISTICA</x:String>
+                        <x:String>MANTENIMIENTO</x:String>
+                        <x:String>MANUFACTURA</x:String>
+                        <x:String>MERCADEO</x:String>
+                        <x:String>PLAN_CONTINGENCIA</x:String>
+                        <x:String>PLAN_PRUEBAS_16_1</x:String>
+                        <x:String>PLANIFICACION</x:String>
+                        <x:String>PRESUPUESTO</x:String>
+                        <x:String>PROYECTO_CHIRRIPO</x:String>
+                        <x:String>PRUEBAS_CRIS</x:String>
+                        <x:String>PRUEBAS_LAKEHOUSE</x:String>
+                        <x:String>QUIEBRE_COMERCIAL</x:String>
+                        <x:String>TABLEAU_EXTRACTOS</x:String>
+                        <x:String>TECNOLOGIAS_INFORMACION</x:String>
+                        <x:String>TEST_QA</x:String>
+                        <x:String>WELLINGTON</x:String>
+                        <x:String>WMS</x:String>
+                        <x:String>ZBI_BW</x:String>
+                        <x:String>ZBI_HOUSEKEEPING</x:String>
+                        <x:String>ZBI_PUBLICACIONES</x:String>
+                        <x:String>ZBI_TEMPORAL</x:String>
+                        <x:String>ZZBI_DESACTIVADOS</x:String>
+                      </scg:List>
+                    </ucas:SelectMenuItem.Items>
+                    <ucas:SelectMenuItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8c817b12-1625-4eff-954a-76bad629ad29" InformativeScreenshot="a7545b20acce858a745894ae3528559b" Selector="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SELECT' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ucas:SelectMenuItem.Target>
+                  </ucas:SelectMenuItem>
+                  <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[in_vIntContadorExec]" sap:VirtualizedContainerService.HintSize="798,11801" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                    <Sequence x:Key="0" DisplayName="FACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS_PARAM" sap:VirtualizedContainerService.HintSize="758,5708" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Eejecutar job" sap:VirtualizedContainerService.HintSize="696,615" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Execute" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory" CvTextArgument="Execute, Add Schedule, Export Execution Command" CvType="Text" DesignTimeRectangle="1195, 356, 40, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Execute'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Execute' idx='2' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Execute' tag='A' type='' class='' check:text='Execute' /&gt;" Guid="05f64163-deff-4a7f-9525-9b7ce32629c1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACwAAAAQCAYAAABtPJ3XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEkSURBVEhL1ZMxDsIwDEVzwxwr56iElGswIOUWCERFBqYuLAyfOolbu9BSJEDkS1EbFyfP38ZcrzfUsXZomhPqAd5u0OxvMKhMFQOHFsYcHpYL5fsXFdwB1ndlt6wJcIsf8E3UwdsPA5MDxl3Khn53hI+0ucAN3eBYrxhhOW4jUlidnyGpe9Efdb7MfcLzYiQYgi6gd35yTIwM5Sc47djQ7hlg7TAZMBaeimGjit4Yiezm2DrprixQXzpoDbByl5dmWg/Mhw0Vz4DNxVcDL5m2GpgOzRDUYnmRnm3KFwAU5vlPMKWQUvzzkRhz00jwf6DoxQzTZWcFoC5WYyFdlXHtaorZFq5/z8ClqEkxOpfgbc8QBfDfK8BXBRx86kBFDmdVBgzcAYk9DX+hveHxAAAAAElFTkSuQmCC" InformativeScreenshot="87093699fb4077d157302487d1721cd1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="5" DelayBefore="5" DisplayName="Click Execute" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobExecute?HISTORY=%2FDataServices%2Fservlet%2FAwBatchJobHistory%3FREPOSITORY_NAME%3DDSREPO43%26SHOWREPO%3D%26ACTIVE_VIEW%3DBatch%2BJob%2BConfiguration&amp;REPOSITORY_NAME=DSREPO43&amp;JobName=FACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS_PARAM&amp;GUID=66b06061-3ba0-45f7-a385-24c99efa93f2&amp;SHOWREPO=" CvElementArea="364, 770, 54, 20" CvTextArea="373, 774, 38, 10" CvTextArgument="Execute" CvType="Button" DesignTimeRectangle="366, 771, 52, 17" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Execute'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='submit' aaname='Execute' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='submit' aaname='Execute' class='' check:text='Execute' /&gt;" Guid="96b95d03-7fc0-4917-9b4a-813ab374ec08" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADgAAAAVCAYAAAATtC32AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEqSURBVFhH7ZdBDoQgDEU5HwdyyTV0wcq1J+Ak3MIjdKiUCrFqwjgLcJr8RKF8+qgmqqDzeBfgPM8wTRMMw9CksHZkyIMBcWJZFljXtWkhQw7JgOM4igtaFLKkYEBssZTcopAlxR+Q5S1opUAVMuCk3EfkwVonjN+rHtDUbVilL/Z7GDCctFZgXLx3RoG2Plw7MEKnvdX8BHCetuBp3hkN1kfPIkfwOlM9IG9CYmAsyIRHSlNBETRBb2sRYvNIBWLReC0B0hryF70oX9LDHSQVG+8d2BVgRI87wBOvwqPUDwCpG85wV4tTTzocAsKkTuZjlHvldaF6wOIUUanAu3cwiMCO72Bck/x0DohjG6TsVdSXqQ6wIb0TsPtv0e7/JjBwotv/wV6jc0CAD2FeIO4YGlm/AAAAAElFTkSuQmCC" InformativeScreenshot="8fcd35a82ba134700f749506b790d9a4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                      <Sequence DisplayName="Monitoreo del job" sap:VirtualizedContainerService.HintSize="696,2570" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Delay DisplayName="Tiempo de espera del job" Duration="[in_vIntTiempoEsperaJob]" sap:VirtualizedContainerService.HintSize="634,122" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="5" DisplayName="Click Home" sap:VirtualizedContainerService.HintSize="634,189" sap2010:WorkflowViewState.IdRef="NClick_21" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/jsp/banner.jsp?SUB_APP_NAME=ADMIN" CvTextArgument="Home" CvType="Text" DesignTimeRectangle="1648, 173, 32, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Home'" FullSelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' /&gt;" FuzzySelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' tag='A' type='' class='bannerLink' check:text='Home' /&gt;" Guid="3f84676f-0c70-4fa1-bc37-67e78ad52fc9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAInSURBVEhL1VHLThtBEJzP40vw/gOnwDnwAVbwjdfNNuKUIBtCgiN5YVes7XhRoiS2BSdIQiCGQ9Hd8/DMEhF8QDKWSt1TXV1TO1aYsd/sBcpHd5glzHCgdA9RtI5KGgp2VsqIts4D7jnx8gPxeS7ScLzs1lHZWjcz9uliyejmVrpuX2utRx07ljeYKtChXGhMjPHS7qS3Oh3aeAW+OqTsWN3CHg7Zz6AQyCYP4V/04LX46wsfI8Hdq3AIM9utk5/3KrIXvtIUL3SOykIYyF1cMH48UPGDwztVPrxFn5p+0kSJhqs07A8JzNFMBzoTzvUj3tEzG6gU1SQQ79hA7JEPOxJoNaEdDkR/0UfPXwehGXFcVW9wi94PwjEHWsObI+qZG4yF314uo7R5JtyHzTX6ohq2eSb6MhbfkvaI+xrqpOnSjuiWO7RPukEHi+x7zPdwTzvvtP/Ez9xJepV9+wtB3MA8LZbjsT4LxqhSoPmNkfTMVV9PntvxsltDlfvvY+xvcKAMJ+KR4ZX4ar8sbpLWevj36arSLzdIv94goZrYypw9E+w80Hm8O3u9z03jr+L8GvHpNdr5H3DfZpxST9CcrtILT3rp9U6bz5az4F3H6/pUf9XqXaHV+41Pn68IVLkXbgL/LD3p/LOA9lsMwwuc7un+6uDkFw4yHz/DM88tDPe+qHnAU7X6Kf1VM7kEoyH1wlR9fqz/F2Seao9GytyFcHbv//6XuAdQ6dzwJFFihwAAAABJRU5ErkJggg==" InformativeScreenshot="5f56e1b2b9af9fbd6be4fbf6fff1f70c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Administrador" sap:VirtualizedContainerService.HintSize="634,189" sap2010:WorkflowViewState.IdRef="NClick_22" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/launch/launch.action" CvTextArgument="Administrator" CvType="Text" DesignTimeRectangle="149, 353, 79, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Administrator'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' type='' class='standardTitle' check:text='Administrator' /&gt;" Guid="aa327af4-a504-4d17-aa11-d61a3a69edb8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAASCAYAAAAntuLJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHZSURBVFhH7ZW9ccMwDIU1XkZxqQ28gxoXHkALqFDvAXwuNYFduE+KOAh/ABKAKNF2qEvDd4eCNAg8foTOzefXN9QoE83j8QM1ykQDVcVUYRbUHOb1BO3uCB+7HoYr7iU1QWfzDhOun9Udhr05tz/BDXcWhV7a8Y4bK7K5L3shWU8DXHD1rmYwb2NvQFqYuUu8C3ML/c3L5WDvWxwmTc0AXWp6wtRa4yaHXcA/gpnmcWCPMfl6bk1m1WSefX43xtrhEfVk8v4murPdxHq0b+vSOePR5WMvD43C++HDw79Gkcs5kF9T2/3GHlDCZOYDnPCpk2mEgkUlTLp4vKC7MEFwuWmYVEdMiYApz8lpUpNJ/TQEWgs/88lcra38cgmYAqC4SGKtmmj4y4bSMKnusof4QAKSUxpm9BrlfWFg/io8I+EJ/fqvQorBVJfU641hkrnVB6WpoAhe8zB9XcqR+cLr4tlXYGqjLOafqtU/wAzCeuG3HEw9KCswdS2jl2H6ghGGkwCIhqgpwcem28NUlxTncjClH98j5kuvGbh5mHggvBxJAaQ8V3zh33wzmHHt+od6Xr6fDdMzAVOe7aFNeLBBPmI9E6zPEzCrSqjCLKgKs6AqzIKqMIsJ4BfeSVgAwewx6wAAAABJRU5ErkJggg==" InformativeScreenshot="84521463e66b9a97d1dd16c62ba8e170.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="634,189" sap2010:WorkflowViewState.IdRef="NClick_23" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidsprd:8080/DataServices/servlet/AwHome" CvTextArgument="DSREPOPD43" CvType="Text" DesignTimeRectangle="256, 360, 74, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'DSREPOPD43'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' tag='A' type='' class='' check:text='DSREPOPD43' /&gt;" Guid="ae312761-fb1f-4a00-b980-7aaba54fa023" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAQCAYAAAC4LkmaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGqSURBVFhH7ZUxsoMwDEQ5DSfiVNyAW3Ab2p8ZJkWadDQpFEuyjSQLgvmtmdkCy1qvXsykm6YJmurVwN1Ut20faKpXA3dTO7jlCX33B51U/4RFbN7mVdeHV6y9YezF+tV69J+HstaP79jL0nseMC5HNVbut5lROZcW+Yia9LV5DDgnUIb3giEYDHOq8zsbMhhlrvycupANbLPoHEEEw9SP+mnvCnOqpR/RwkuA0zq+pzMdNqfgGE5cc+tJHhheY9CV4GTvwbmy57S/ABdEnnIN51xhHB8lUFSx/yc4OfwHFjR2r64DRvlxPfVmHQ0ue73BUeJG1PeLCxHesR9npPkMOPIu5q0Et4s/UzTkmg9mP8wBK5TCub1XwVX1C3BYj7A8cKwy//VPNa/t2g8yxoXXBXBu4CA3l+457ffAkSevedA9L3vG9T8HCqDrCI5hOGBU4H+AC1I5UCbLaX8BjrN4+9WNw768h78w+eUZcMFQSoYNImNZz8Y+GBqIQsewspfEw/8Ch9JnOz/wUT+BS31RB3sVuCDOz7Kz7eCaqtTA3VQDd1MdtOfGA/AFEb+W9TPKJksAAAAASUVORK5CYII=" InformativeScreenshot="db4c5b10a6f0638b2b3c17a45c0fd8f2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="634,250" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrNombreJob2]" Version="V3">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory?REPOSITORY_NAME=DSREPO43&amp;SHOWREPO=2" CvType="InputBox" DesignTimeRectangle="240, 320, 200, 17" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' idx='1' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' type='text' class='' aaname='' /&gt;" Guid="7c1e6035-5ed3-4120-95bc-593e5923d455" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMwAAAAVCAYAAAAKEwEVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABzSURBVHhe7dMxDoAgAARBX83TaSgwFhpQo1w/k1x19W61tm5maxOMWbApmFKKmd02NnIFcxzA0xiNYOCHYCAgGAgIBgKCgYBgICAYCAgGAoKBgGAgIBgICAYCgoGAYCDwGswZjZnNGxuZgjGz7wnGbHmt75GXuIS9qp+gAAAAAElFTkSuQmCC" InformativeScreenshot="67ed2b609939b7962748189868fce6d7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="634,139" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a26b8df2-3c85-4fea-ada6-10747d89cb33" InformativeScreenshot="74611717b1caaf1faf5b24f8d78d3581" Selector="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <ui:RetryScope ContinueOnError="True" DisplayName="Private: Retry Scope in_StrDownloadPath" sap:VirtualizedContainerService.HintSize="634,1370" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="80" RetryInterval="[in_vIntTiempoEsperaJob]">
+                          <ui:RetryScope.ActivityBody>
+                            <ActivityAction>
+                              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="592,1097" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NGetText DisplayName="Get Text '10s'" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" TextString="[vStrCompletar]" Version="V3">
+                                  <uix:NGetText.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://azbidsprd:8080/DataServices/servlet/AwBatchJobHistory" CvType="AnyWordGroup" DesignTimeRectangle="1652, 484, 67, 23" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'10s'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl class='JCActaHTMLTableSortable' tableRow='1' tag='TABLE' /&gt;&lt;webctrl class='cell' isleaf='1' tableCol='9' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl class='JCActaHTMLTableSortable' tag='TABLE' /&gt;&lt;webctrl class='cell' isleaf='1' type='' tag='TD' /&gt;" Guid="93d55d04-fc59-42f7-b8db-f0f81616178b" ImageBase64="" InformativeScreenshot="763d3a51d94c0f616f4672b09e985f20.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NGetText.Target>
+                                </uix:NGetText>
+                                <If Condition="[vStrCompletar = &quot;0s&quot;]" sap:VirtualizedContainerService.HintSize="530,820" sap2010:WorkflowViewState.IdRef="If_3">
+                                  <If.Then>
+                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,342" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,124" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Sigue en ejecución&quot; + &quot; &quot; +vStrCompletar]" />
+                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="354,130" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                        <ui:Click.CursorPosition>
+                                          <ui:CursorPosition Position="Center">
+                                            <ui:CursorPosition.OffsetX>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetX>
+                                            <ui:CursorPosition.OffsetY>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetY>
+                                          </ui:CursorPosition>
+                                        </ui:Click.CursorPosition>
+                                        <ui:Click.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a26b8df2-3c85-4fea-ada6-10747d89cb33" InformativeScreenshot="74611717b1caaf1faf5b24f8d78d3581" Selector="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' /&gt;">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:Click.Target>
+                                      </ui:Click>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,317" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Job ejecutado con exito&quot;]" />
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Boolean">[vBooDownloadedFileExists]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:RetryScope.ActivityBody>
+                          <ui:RetryScope.Condition>
+                            <ActivityFunc x:TypeArguments="x:Boolean">
+                              <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[vBooDownloadedFileExists]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+                            </ActivityFunc>
+                          </ui:RetryScope.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:RetryScope>
+                      </Sequence>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="696,124" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Inicia la validación para saber si se ejcuto con errores&quot;]" />
+                      <Sequence DisplayName="&quot;Inicia la validación para saber si se ejcuto con errores&quot;" sap:VirtualizedContainerService.HintSize="696,2309" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="5" DisplayName="Click Home" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/jsp/banner.jsp?SUB_APP_NAME=ADMIN" CvTextArgument="Home" CvType="Text" DesignTimeRectangle="1648, 173, 32, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Home'" FullSelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' /&gt;" FuzzySelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' tag='A' type='' class='bannerLink' check:text='Home' /&gt;" Guid="3f84676f-0c70-4fa1-bc37-67e78ad52fc9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAInSURBVEhL1VHLThtBEJzP40vw/gOnwDnwAVbwjdfNNuKUIBtCgiN5YVes7XhRoiS2BSdIQiCGQ9Hd8/DMEhF8QDKWSt1TXV1TO1aYsd/sBcpHd5glzHCgdA9RtI5KGgp2VsqIts4D7jnx8gPxeS7ScLzs1lHZWjcz9uliyejmVrpuX2utRx07ljeYKtChXGhMjPHS7qS3Oh3aeAW+OqTsWN3CHg7Zz6AQyCYP4V/04LX46wsfI8Hdq3AIM9utk5/3KrIXvtIUL3SOykIYyF1cMH48UPGDwztVPrxFn5p+0kSJhqs07A8JzNFMBzoTzvUj3tEzG6gU1SQQ79hA7JEPOxJoNaEdDkR/0UfPXwehGXFcVW9wi94PwjEHWsObI+qZG4yF314uo7R5JtyHzTX6ohq2eSb6MhbfkvaI+xrqpOnSjuiWO7RPukEHi+x7zPdwTzvvtP/Ez9xJepV9+wtB3MA8LZbjsT4LxqhSoPmNkfTMVV9PntvxsltDlfvvY+xvcKAMJ+KR4ZX4ar8sbpLWevj36arSLzdIv94goZrYypw9E+w80Hm8O3u9z03jr+L8GvHpNdr5H3DfZpxST9CcrtILT3rp9U6bz5az4F3H6/pUf9XqXaHV+41Pn68IVLkXbgL/LD3p/LOA9lsMwwuc7un+6uDkFw4yHz/DM88tDPe+qHnAU7X6Kf1VM7kEoyH1wlR9fqz/F2Seao9GytyFcHbv//6XuAdQ6dzwJFFihwAAAABJRU5ErkJggg==" InformativeScreenshot="5f56e1b2b9af9fbd6be4fbf6fff1f70c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Administrador" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/launch/launch.action" CvTextArgument="Administrator" CvType="Text" DesignTimeRectangle="149, 353, 79, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Administrator'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' type='' class='standardTitle' check:text='Administrator' /&gt;" Guid="aa327af4-a504-4d17-aa11-d61a3a69edb8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAASCAYAAAAntuLJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHZSURBVFhH7ZW9ccMwDIU1XkZxqQ28gxoXHkALqFDvAXwuNYFduE+KOAh/ABKAKNF2qEvDd4eCNAg8foTOzefXN9QoE83j8QM1ykQDVcVUYRbUHOb1BO3uCB+7HoYr7iU1QWfzDhOun9Udhr05tz/BDXcWhV7a8Y4bK7K5L3shWU8DXHD1rmYwb2NvQFqYuUu8C3ML/c3L5WDvWxwmTc0AXWp6wtRa4yaHXcA/gpnmcWCPMfl6bk1m1WSefX43xtrhEfVk8v4murPdxHq0b+vSOePR5WMvD43C++HDw79Gkcs5kF9T2/3GHlDCZOYDnPCpk2mEgkUlTLp4vKC7MEFwuWmYVEdMiYApz8lpUpNJ/TQEWgs/88lcra38cgmYAqC4SGKtmmj4y4bSMKnusof4QAKSUxpm9BrlfWFg/io8I+EJ/fqvQorBVJfU641hkrnVB6WpoAhe8zB9XcqR+cLr4tlXYGqjLOafqtU/wAzCeuG3HEw9KCswdS2jl2H6ghGGkwCIhqgpwcem28NUlxTncjClH98j5kuvGbh5mHggvBxJAaQ8V3zh33wzmHHt+od6Xr6fDdMzAVOe7aFNeLBBPmI9E6zPEzCrSqjCLKgKs6AqzIKqMIsJ4BfeSVgAwewx6wAAAABJRU5ErkJggg==" InformativeScreenshot="84521463e66b9a97d1dd16c62ba8e170.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidsprd:8080/DataServices/servlet/AwHome" CvTextArgument="DSREPOPD43" CvType="Text" DesignTimeRectangle="256, 360, 74, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'DSREPOPD43'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' tag='A' type='' class='' check:text='DSREPOPD43' /&gt;" Guid="ae312761-fb1f-4a00-b980-7aaba54fa023" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAQCAYAAAC4LkmaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGqSURBVFhH7ZUxsoMwDEQ5DSfiVNyAW3Ab2p8ZJkWadDQpFEuyjSQLgvmtmdkCy1qvXsykm6YJmurVwN1Ut20faKpXA3dTO7jlCX33B51U/4RFbN7mVdeHV6y9YezF+tV69J+HstaP79jL0nseMC5HNVbut5lROZcW+Yia9LV5DDgnUIb3giEYDHOq8zsbMhhlrvycupANbLPoHEEEw9SP+mnvCnOqpR/RwkuA0zq+pzMdNqfgGE5cc+tJHhheY9CV4GTvwbmy57S/ABdEnnIN51xhHB8lUFSx/yc4OfwHFjR2r64DRvlxPfVmHQ0ue73BUeJG1PeLCxHesR9npPkMOPIu5q0Et4s/UzTkmg9mP8wBK5TCub1XwVX1C3BYj7A8cKwy//VPNa/t2g8yxoXXBXBu4CA3l+457ffAkSevedA9L3vG9T8HCqDrCI5hOGBU4H+AC1I5UCbLaX8BjrN4+9WNw768h78w+eUZcMFQSoYNImNZz8Y+GBqIQsewspfEw/8Ch9JnOz/wUT+BS31RB3sVuCDOz7Kz7eCaqtTA3VQDd1MdtOfGA/AFEb+W9TPKJksAAAAASUVORK5CYII=" InformativeScreenshot="db4c5b10a6f0638b2b3c17a45c0fd8f2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="530,250" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrNombreJob2]" Version="V3">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory?REPOSITORY_NAME=DSREPO43&amp;SHOWREPO=2" CvType="InputBox" DesignTimeRectangle="240, 320, 200, 17" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' idx='1' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' type='text' class='' aaname='' /&gt;" Guid="7c1e6035-5ed3-4120-95bc-593e5923d455" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMwAAAAVCAYAAAAKEwEVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABzSURBVHhe7dMxDoAgAARBX83TaSgwFhpQo1w/k1x19W61tm5maxOMWbApmFKKmd02NnIFcxzA0xiNYOCHYCAgGAgIBgKCgYBgICAYCAgGAoKBgGAgIBgICAYCgoGAYCDwGswZjZnNGxuZgjGz7wnGbHmt75GXuIS9qp+gAAAAAElFTkSuQmCC" InformativeScreenshot="67ed2b609939b7962748189868fce6d7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory?REPOSITORY_NAME=DSREPO43&amp;SHOWREPO=2" CvElementArea="238, 372, 51, 19" CvTextArea="247, 376, 33, 10" CvTextArgument="Search" CvType="Button" DesignTimeRectangle="240, 373, 48, 17" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Search'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' type='button' class='button' check:text='Search' /&gt;" Guid="b8f97a0f-36e9-45d3-8c06-8f06447149ff" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAVCAYAAAAJiM14AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE6SURBVFhH7ZdBbsMgEEU5HwfykmPABinJ3ifgJNzCu2yymPJthg61HUVOaxXaSF+x8WD/Nx8iR93vD+pJfQNdrzdyztEwDE0IXuFZMhSgy+VG4zjSNE1NCZ7hfQVkrduc0IKstWsgRLhV3ILg/R8ICkaRUixNPm7XvaVgSPu4fW1Hx4DSg5QJn+fRk9aeoqz5Dp0G9BQgkCnJGQp5vEo0z41ep/vonHAkr7kmJw4gk5TnvQJ3DAgCFBsUSw7GTRA1s/lAgccmGF/qZ6BsEscldV4B+ObGvbgKjgNVQipIQ3aZlVOCuS8NAATDy+OiasmlZ/wUkOzsIoAsxquEWOhu2XN1QhKo3JPTOAsIqn/lJITcQ0mzCTmWIMwCUqeys4fOAvqt+htAbb/LuTVQd2/bUBf/h6izT2dARB8h3fqfZlqoIAAAAABJRU5ErkJggg==" InformativeScreenshot="7ae4ccac41c1319303920fc5633f9ae6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Trace" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory" CvTextArgument="Trace,Monitor,Error,Performance Monitor" CvType="Text" DesignTimeRectangle="1072, 438, 28, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Trace'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Trace' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Trace' tag='A' type='' class='' check:text='Trace' /&gt;" Guid="f8adfbf6-28b5-4151-a8d6-aa75fcc332bf" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADZSURBVEhL7ZMxDoMwDEVzwJzKN4nUg+QkFkiIgYWNhcGNQ+N+CqoQok2HDn9xbOf5O3HTNEtN/QF+CCB24lyzo04iFFytXQciNeLDuIl/QocAOLTiqBNKjuQ49+LBJcvFuO+Fsb7EabC+quMAsAqOgzXPq8uXjRL8s8562LnmLzkUH7VJxwFgoqzNtENyqJXAkJO0mr4IXDgFoOfmiE34BuDFdtRpALR6OduuIF+cf1cBW+eozq0AviwFXUV5H+rCEl+9GVwDuBHJ7QN8TXyrC8ChMoCqMsAsd0HhRoB75+rtAAAAAElFTkSuQmCC" InformativeScreenshot="8167eb86e9ccf071836872f9350d21db.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="2" DisplayName="Click Job Error" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobLogs?HISTORY=%2FDataServices%2Fservlet%2FAwBatchJobHistory%3FREPOSITORY_NAME%3DDSREPO43%26JobName%3DFACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS%26JOB%3DAll%2Bbatch%2Bjobs%26GROUP_TIME_RADIO%3DLAST_EXECUTION_RADIO%26DAYS_INTERVAL%3D1%26FROM_DATE%3D%26TO_DATE%3D%26ACTIVE_VIEW%3DBatch%2BJob%2BStatus&amp;ObjectKey=1132&amp;REPOSITORY_NAME=DSREPO43&amp;JobName=FACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS&amp;JobServer=AZBIDSCAL%3A3500&amp;SHOWREPO=&amp;ACTIVE_VIEW=Job%2BTrace%2BLog" CvTextArgument="Job Error Log" CvType="Text" DesignTimeRectangle="432, 244, 65, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Job Error Log'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Job Error Log' class='unselectedTab' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Job Error Log' class='unselectedTab' tag='A' type='' check:text='Job Error Log' /&gt;" Guid="f1dfec62-d422-402d-b183-49f082b0106e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAAAQCAYAAABAzrJtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVFhH7ZQ9ksIwDIW5aw6RC9Cp4gJp01HvTGboGMp0OxyAkjtoLfkHRcgmZIGCuHgFsqQnf1bYXC5XrLrpdPrFCsVQhWKoQjFkQDlj326x7c8qLjR02LR7HK2zqHGPbbPFRqnYd6EGcL3haJ4t0Zuh7LAfjbMX6/NQCEB86WjMUDoEl8dxC1AJiqyHH/YDIJ+Q/8hTAchD8XfxvcQsYovZ180v68pQJhcT8TA0DCou+2Q+H67h+mnfdKmip7iYUA7KJM71HQ5qXs55Cgq/zm0Lxn7nTZKBioffrEebkuoV1JmeUjYU39c/HOmIQPMc1FzBT9YGKNQg8zozBvxSKL6xH4yKQ7N/fz4LoBQ9n4Gi4ql+6sc5OSgRBn/7Lin9cQYALGUA1FDnR/HlwrkU5ZagkAqeWSjSw0k+mI+JBxKzzfyjXZesLVshFLk9pPvtW/2mWKpQ7nTFP+1t/C2DpQ6aAAAAAElFTkSuQmCC" InformativeScreenshot="59cbd7c2d3be6d57b6718e3b2ddc68d1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="530,122" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'TD'" sap:VirtualizedContainerService.HintSize="530,139" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0dcea689-e306-4f0d-b994-ede50110c2b9" InformativeScreenshot="b1ee0a8ef27221a7983a708bc8722d68" Selector="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl class='JCActaHTMLTable' idx='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[vSrErrorJob]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <If Condition="[vSrErrorJob = &quot;Empty file received.&quot;]" sap:VirtualizedContainerService.HintSize="530,549" sap2010:WorkflowViewState.IdRef="If_1">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign out_BooEntryModule" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[out_BooEntryModule]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign out_BooEntryModule" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[out_BooEntryModule]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </Sequence>
+                    <Sequence x:Key="1" DisplayName="FACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS" sap:VirtualizedContainerService.HintSize="758,5710" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Ejecutar Job de lacteos" sap:VirtualizedContainerService.HintSize="696,615" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Execute" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory" CvTextArgument="Execute Add Schedule, Export Execution Command" CvType="Text" DesignTimeRectangle="1195, 344, 40, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Execute'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='A' aaname='Execute' idx='1' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='A' aaname='Execute' type='' class='' check:text='Execute' /&gt;" Guid="9b99425c-96ed-471d-a1e6-533670eba488" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACwAAAAQCAYAAABtPJ3XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEbSURBVEhL1ZPBDoIwDIb3gIsPtbfguMQH2cHnIBCRAxduXDzUdVtHiyCYqHEmfyQdXb/+LaqqKihJ5QFP0x1KUsHArgOlmicZJxO+IWca0HZcPVtqAdyBY4e/0QhWfxgYHVBmYO+1YGs8G8DkaVDMq+5BU1z3UOc8uj9C4vRq28p8nrvCs7MSBIEF8Jn+KcZWBvMDnHQsj3sDWDqMBsyNh2bIqKQ3ViK6OY+Ou8sblEWzjgALd0mS6TgwXZY73gDbih8GfmXaYWC8NELgiHkhuduYzwB8PO9/gEmNpObXV2LODStB30DSzg5jsZsAEIXFWnBXeVy6GmK6A+OfI3BqatGMzEX4k2e4MuC/1wVsUcDuHCagoLBfYcAADx7Xibm+RtXLAAAAAElFTkSuQmCC" InformativeScreenshot="28853735d9c8418c605fc684ff2a2dfa.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="5" DisplayName="Click Execute" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobExecute?HISTORY=%2FDataServices%2Fservlet%2FAwBatchJobHistory%3FREPOSITORY_NAME%3DDSREPO43%26SHOWREPO%3D%26ACTIVE_VIEW%3DBatch%2BJob%2BConfiguration&amp;REPOSITORY_NAME=DSREPO43&amp;JobName=FACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS_PARAM&amp;GUID=66b06061-3ba0-45f7-a385-24c99efa93f2&amp;SHOWREPO=" CvElementArea="364, 770, 54, 20" CvTextArea="373, 774, 38, 10" CvTextArgument="Execute" CvType="Button" DesignTimeRectangle="366, 771, 52, 17" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Execute'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='submit' aaname='Execute' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' type='submit' aaname='Execute' class='' check:text='Execute' /&gt;" Guid="96b95d03-7fc0-4917-9b4a-813ab374ec08" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADgAAAAVCAYAAAATtC32AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEqSURBVFhH7ZdBDoQgDEU5HwdyyTV0wcq1J+Ak3MIjdKiUCrFqwjgLcJr8RKF8+qgmqqDzeBfgPM8wTRMMw9CksHZkyIMBcWJZFljXtWkhQw7JgOM4igtaFLKkYEBssZTcopAlxR+Q5S1opUAVMuCk3EfkwVonjN+rHtDUbVilL/Z7GDCctFZgXLx3RoG2Plw7MEKnvdX8BHCetuBp3hkN1kfPIkfwOlM9IG9CYmAsyIRHSlNBETRBb2sRYvNIBWLReC0B0hryF70oX9LDHSQVG+8d2BVgRI87wBOvwqPUDwCpG85wV4tTTzocAsKkTuZjlHvldaF6wOIUUanAu3cwiMCO72Bck/x0DohjG6TsVdSXqQ6wIb0TsPtv0e7/JjBwotv/wV6jc0CAD2FeIO4YGlm/AAAAAElFTkSuQmCC" InformativeScreenshot="8fcd35a82ba134700f749506b790d9a4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                      <Sequence DisplayName="Monitoreo del job" sap:VirtualizedContainerService.HintSize="696,2570" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Delay DisplayName="Tiempo de espera del job" Duration="[in_vIntTiempoEsperaJob]" sap:VirtualizedContainerService.HintSize="634,122" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="5" DisplayName="Click Home" sap:VirtualizedContainerService.HintSize="634,189" sap2010:WorkflowViewState.IdRef="NClick_24" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/jsp/banner.jsp?SUB_APP_NAME=ADMIN" CvTextArgument="Home" CvType="Text" DesignTimeRectangle="1648, 173, 32, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Home'" FullSelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' /&gt;" FuzzySelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' tag='A' type='' class='bannerLink' check:text='Home' /&gt;" Guid="3f84676f-0c70-4fa1-bc37-67e78ad52fc9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAInSURBVEhL1VHLThtBEJzP40vw/gOnwDnwAVbwjdfNNuKUIBtCgiN5YVes7XhRoiS2BSdIQiCGQ9Hd8/DMEhF8QDKWSt1TXV1TO1aYsd/sBcpHd5glzHCgdA9RtI5KGgp2VsqIts4D7jnx8gPxeS7ScLzs1lHZWjcz9uliyejmVrpuX2utRx07ljeYKtChXGhMjPHS7qS3Oh3aeAW+OqTsWN3CHg7Zz6AQyCYP4V/04LX46wsfI8Hdq3AIM9utk5/3KrIXvtIUL3SOykIYyF1cMH48UPGDwztVPrxFn5p+0kSJhqs07A8JzNFMBzoTzvUj3tEzG6gU1SQQ79hA7JEPOxJoNaEdDkR/0UfPXwehGXFcVW9wi94PwjEHWsObI+qZG4yF314uo7R5JtyHzTX6ohq2eSb6MhbfkvaI+xrqpOnSjuiWO7RPukEHi+x7zPdwTzvvtP/Ez9xJepV9+wtB3MA8LZbjsT4LxqhSoPmNkfTMVV9PntvxsltDlfvvY+xvcKAMJ+KR4ZX4ar8sbpLWevj36arSLzdIv94goZrYypw9E+w80Hm8O3u9z03jr+L8GvHpNdr5H3DfZpxST9CcrtILT3rp9U6bz5az4F3H6/pUf9XqXaHV+41Pn68IVLkXbgL/LD3p/LOA9lsMwwuc7un+6uDkFw4yHz/DM88tDPe+qHnAU7X6Kf1VM7kEoyH1wlR9fqz/F2Seao9GytyFcHbv//6XuAdQ6dzwJFFihwAAAABJRU5ErkJggg==" InformativeScreenshot="5f56e1b2b9af9fbd6be4fbf6fff1f70c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Administrador" sap:VirtualizedContainerService.HintSize="634,189" sap2010:WorkflowViewState.IdRef="NClick_25" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/launch/launch.action" CvTextArgument="Administrator" CvType="Text" DesignTimeRectangle="149, 353, 79, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Administrator'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' type='' class='standardTitle' check:text='Administrator' /&gt;" Guid="aa327af4-a504-4d17-aa11-d61a3a69edb8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAASCAYAAAAntuLJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHZSURBVFhH7ZW9ccMwDIU1XkZxqQ28gxoXHkALqFDvAXwuNYFduE+KOAh/ABKAKNF2qEvDd4eCNAg8foTOzefXN9QoE83j8QM1ykQDVcVUYRbUHOb1BO3uCB+7HoYr7iU1QWfzDhOun9Udhr05tz/BDXcWhV7a8Y4bK7K5L3shWU8DXHD1rmYwb2NvQFqYuUu8C3ML/c3L5WDvWxwmTc0AXWp6wtRa4yaHXcA/gpnmcWCPMfl6bk1m1WSefX43xtrhEfVk8v4murPdxHq0b+vSOePR5WMvD43C++HDw79Gkcs5kF9T2/3GHlDCZOYDnPCpk2mEgkUlTLp4vKC7MEFwuWmYVEdMiYApz8lpUpNJ/TQEWgs/88lcra38cgmYAqC4SGKtmmj4y4bSMKnusof4QAKSUxpm9BrlfWFg/io8I+EJ/fqvQorBVJfU641hkrnVB6WpoAhe8zB9XcqR+cLr4tlXYGqjLOafqtU/wAzCeuG3HEw9KCswdS2jl2H6ghGGkwCIhqgpwcem28NUlxTncjClH98j5kuvGbh5mHggvBxJAaQ8V3zh33wzmHHt+od6Xr6fDdMzAVOe7aFNeLBBPmI9E6zPEzCrSqjCLKgKs6AqzIKqMIsJ4BfeSVgAwewx6wAAAABJRU5ErkJggg==" InformativeScreenshot="84521463e66b9a97d1dd16c62ba8e170.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="634,189" sap2010:WorkflowViewState.IdRef="NClick_26" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidsprd:8080/DataServices/servlet/AwHome" CvTextArgument="DSREPOPD43" CvType="Text" DesignTimeRectangle="256, 360, 74, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'DSREPOPD43'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' tag='A' type='' class='' check:text='DSREPOPD43' /&gt;" Guid="ae312761-fb1f-4a00-b980-7aaba54fa023" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAQCAYAAAC4LkmaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGqSURBVFhH7ZUxsoMwDEQ5DSfiVNyAW3Ab2p8ZJkWadDQpFEuyjSQLgvmtmdkCy1qvXsykm6YJmurVwN1Ut20faKpXA3dTO7jlCX33B51U/4RFbN7mVdeHV6y9YezF+tV69J+HstaP79jL0nseMC5HNVbut5lROZcW+Yia9LV5DDgnUIb3giEYDHOq8zsbMhhlrvycupANbLPoHEEEw9SP+mnvCnOqpR/RwkuA0zq+pzMdNqfgGE5cc+tJHhheY9CV4GTvwbmy57S/ABdEnnIN51xhHB8lUFSx/yc4OfwHFjR2r64DRvlxPfVmHQ0ue73BUeJG1PeLCxHesR9npPkMOPIu5q0Et4s/UzTkmg9mP8wBK5TCub1XwVX1C3BYj7A8cKwy//VPNa/t2g8yxoXXBXBu4CA3l+457ffAkSevedA9L3vG9T8HCqDrCI5hOGBU4H+AC1I5UCbLaX8BjrN4+9WNw768h78w+eUZcMFQSoYNImNZz8Y+GBqIQsewspfEw/8Ch9JnOz/wUT+BS31RB3sVuCDOz7Kz7eCaqtTA3VQDd1MdtOfGA/AFEb+W9TPKJksAAAAASUVORK5CYII=" InformativeScreenshot="db4c5b10a6f0638b2b3c17a45c0fd8f2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="634,250" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrNombreJob1]" Version="V3">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory?REPOSITORY_NAME=DSREPO43&amp;SHOWREPO=2" CvType="InputBox" DesignTimeRectangle="240, 320, 200, 17" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' idx='1' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' type='text' class='' aaname='' /&gt;" Guid="7c1e6035-5ed3-4120-95bc-593e5923d455" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMwAAAAVCAYAAAAKEwEVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABzSURBVHhe7dMxDoAgAARBX83TaSgwFhpQo1w/k1x19W61tm5maxOMWbApmFKKmd02NnIFcxzA0xiNYOCHYCAgGAgIBgKCgYBgICAYCAgGAoKBgGAgIBgICAYCgoGAYCDwGswZjZnNGxuZgjGz7wnGbHmt75GXuIS9qp+gAAAAAElFTkSuQmCC" InformativeScreenshot="67ed2b609939b7962748189868fce6d7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="634,139" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a26b8df2-3c85-4fea-ada6-10747d89cb33" InformativeScreenshot="74611717b1caaf1faf5b24f8d78d3581" Selector="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <ui:RetryScope ContinueOnError="True" DisplayName="Private: Retry Scope in_StrDownloadPath" sap:VirtualizedContainerService.HintSize="634,1370" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="20" RetryInterval="[in_vIntTiempoEsperaJob]">
+                          <ui:RetryScope.ActivityBody>
+                            <ActivityAction>
+                              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="592,1097" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NGetText DisplayName="Get Text '10s'" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" TextString="[vStrCompletar]" Version="V3">
+                                  <uix:NGetText.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://azbidsprd:8080/DataServices/servlet/AwBatchJobHistory" CvType="AnyWordGroup" DesignTimeRectangle="1652, 484, 67, 23" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'10s'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl class='JCActaHTMLTableSortable' tableRow='1' tag='TABLE' /&gt;&lt;webctrl class='cell' isleaf='1' tableCol='9' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl class='JCActaHTMLTableSortable' tag='TABLE' /&gt;&lt;webctrl class='cell' isleaf='1' type='' tag='TD' /&gt;" Guid="93d55d04-fc59-42f7-b8db-f0f81616178b" ImageBase64="" InformativeScreenshot="763d3a51d94c0f616f4672b09e985f20.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NGetText.Target>
+                                </uix:NGetText>
+                                <If Condition="[vStrCompletar = &quot;0s&quot;]" sap:VirtualizedContainerService.HintSize="530,820" sap2010:WorkflowViewState.IdRef="If_4">
+                                  <If.Then>
+                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,342" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,124" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Sigue en ejecución&quot; + &quot; &quot; +vStrCompletar]" />
+                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="354,130" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                        <ui:Click.CursorPosition>
+                                          <ui:CursorPosition Position="Center">
+                                            <ui:CursorPosition.OffsetX>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetX>
+                                            <ui:CursorPosition.OffsetY>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetY>
+                                          </ui:CursorPosition>
+                                        </ui:Click.CursorPosition>
+                                        <ui:Click.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a26b8df2-3c85-4fea-ada6-10747d89cb33" InformativeScreenshot="74611717b1caaf1faf5b24f8d78d3581" Selector="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' /&gt;">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:Click.Target>
+                                      </ui:Click>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,317" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Job ejecutado con exito&quot;]" />
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Boolean">[vBooDownloadedFileExists]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:RetryScope.ActivityBody>
+                          <ui:RetryScope.Condition>
+                            <ActivityFunc x:TypeArguments="x:Boolean">
+                              <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[vBooDownloadedFileExists]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
+                            </ActivityFunc>
+                          </ui:RetryScope.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:RetryScope>
+                      </Sequence>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="696,124" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Inicia la validación para saber si se ejcuto con errores&quot;]" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="696,124" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Inicia la validación del job de lacteos errores&quot;]" />
+                      <Sequence DisplayName="&quot;Inicia la validación del job de lacteos errores&quot;" sap:VirtualizedContainerService.HintSize="696,2187" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="5" DisplayName="Click Home" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/jsp/banner.jsp?SUB_APP_NAME=ADMIN" CvTextArgument="Home" CvType="Text" DesignTimeRectangle="1648, 173, 32, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Home'" FullSelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' /&gt;" FuzzySelectorArgument="&lt;webctrl name='Banner' tag='FRAME' /&gt;&lt;webctrl aaname='Home' tag='A' type='' class='bannerLink' check:text='Home' /&gt;" Guid="3f84676f-0c70-4fa1-bc37-67e78ad52fc9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAInSURBVEhL1VHLThtBEJzP40vw/gOnwDnwAVbwjdfNNuKUIBtCgiN5YVes7XhRoiS2BSdIQiCGQ9Hd8/DMEhF8QDKWSt1TXV1TO1aYsd/sBcpHd5glzHCgdA9RtI5KGgp2VsqIts4D7jnx8gPxeS7ScLzs1lHZWjcz9uliyejmVrpuX2utRx07ljeYKtChXGhMjPHS7qS3Oh3aeAW+OqTsWN3CHg7Zz6AQyCYP4V/04LX46wsfI8Hdq3AIM9utk5/3KrIXvtIUL3SOykIYyF1cMH48UPGDwztVPrxFn5p+0kSJhqs07A8JzNFMBzoTzvUj3tEzG6gU1SQQ79hA7JEPOxJoNaEdDkR/0UfPXwehGXFcVW9wi94PwjEHWsObI+qZG4yF314uo7R5JtyHzTX6ohq2eSb6MhbfkvaI+xrqpOnSjuiWO7RPukEHi+x7zPdwTzvvtP/Ez9xJepV9+wtB3MA8LZbjsT4LxqhSoPmNkfTMVV9PntvxsltDlfvvY+xvcKAMJ+KR4ZX4ar8sbpLWevj36arSLzdIv94goZrYypw9E+w80Hm8O3u9z03jr+L8GvHpNdr5H3DfZpxST9CcrtILT3rp9U6bz5az4F3H6/pUf9XqXaHV+41Pn68IVLkXbgL/LD3p/LOA9lsMwwuc7un+6uDkFw4yHz/DM88tDPe+qHnAU7X6Kf1VM7kEoyH1wlR9fqz/F2Seao9GytyFcHbv//6XuAdQ6dzwJFFihwAAAABJRU5ErkJggg==" InformativeScreenshot="5f56e1b2b9af9fbd6be4fbf6fff1f70c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Administrador" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_15" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/launch/launch.action" CvTextArgument="Administrator" CvType="Text" DesignTimeRectangle="149, 353, 79, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Administrator'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' aaname='Administrator' type='' class='standardTitle' check:text='Administrator' /&gt;" Guid="aa327af4-a504-4d17-aa11-d61a3a69edb8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAASCAYAAAAntuLJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHZSURBVFhH7ZW9ccMwDIU1XkZxqQ28gxoXHkALqFDvAXwuNYFduE+KOAh/ABKAKNF2qEvDd4eCNAg8foTOzefXN9QoE83j8QM1ykQDVcVUYRbUHOb1BO3uCB+7HoYr7iU1QWfzDhOun9Udhr05tz/BDXcWhV7a8Y4bK7K5L3shWU8DXHD1rmYwb2NvQFqYuUu8C3ML/c3L5WDvWxwmTc0AXWp6wtRa4yaHXcA/gpnmcWCPMfl6bk1m1WSefX43xtrhEfVk8v4murPdxHq0b+vSOePR5WMvD43C++HDw79Gkcs5kF9T2/3GHlDCZOYDnPCpk2mEgkUlTLp4vKC7MEFwuWmYVEdMiYApz8lpUpNJ/TQEWgs/88lcra38cgmYAqC4SGKtmmj4y4bSMKnusof4QAKSUxpm9BrlfWFg/io8I+EJ/fqvQorBVJfU641hkrnVB6WpoAhe8zB9XcqR+cLr4tlXYGqjLOafqtU/wAzCeuG3HEw9KCswdS2jl2H6ghGGkwCIhqgpwcem28NUlxTncjClH98j5kuvGbh5mHggvBxJAaQ8V3zh33wzmHHt+od6Xr6fDdMzAVOe7aFNeLBBPmI9E6zPEzCrSqjCLKgKs6AqzIKqMIsJ4BfeSVgAwewx6wAAAABJRU5ErkJggg==" InformativeScreenshot="84521463e66b9a97d1dd16c62ba8e170.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_16" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwHome" CvTextArgument="X DSREPO43" CvType="Text" DesignTimeRectangle="256, 360, 74, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'DSREPOPD43'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='DSREPOPD43' tag='A' type='' class='' check:text='DSREPOPD43' /&gt;" Guid="e7f213b7-7b35-437a-91a2-d4521452033d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAQCAYAAAC4LkmaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGpSURBVFhH7ZUxzoMwDIU5IKfiFozchJOgvxLq0KUbSwc3tpNgO4YS/jVIbyCOX56/BrUbxxGa6tXA3VS3bR9oqlcDd1M7uOUJffcHnVT/hEVs3uZV14dXrL1h6sX61Xr0n4ey1k/v2MvSex4wLUc1Vu63mVE5lxb5iJr0tXkMOCdQhveCIRgMc6rzOxsyGGWu/Jy6kA1ss+gcQQTD1I/6ae8Kc6qlH9HCS4DTOr6nMx02p+AYTlxz60keGF5j0JXgZO/BubLntL8AF0Secg3nXGGaHiVQVLH/Jzg5/AcWNHavrgNG+XE99WYdDS57vcFR4kbU94sLEd6xH2ek+Qw48i7mrQS3iz9TNOSaD2Y/zAErlMK5vVfBVfULcFiPsDxwrDL/9U81r+3aDzLGhdcFcG7gIDeX7jnt98CRJ6950D0ve8b1PwcKoOsIjmE4YFTgf4ALUjlQJstpfwGOs3j71Y3DvryHvzD55RlwwVBKhg0iY1nPxj4YGohCx7Cyl8TD/wKH0mc7P/BRP4FLfVEHexW4IM7PsrPt4Jqq1MDdVAN3Ux2058YD8AWBub+4FrDoVgAAAABJRU5ErkJggg==" InformativeScreenshot="0ac92398cf52877cd71786d6e5340860.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="530,250" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrNombreJob1]" Version="V3">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory?REPOSITORY_NAME=DSREPO43&amp;SHOWREPO=2" CvType="InputBox" DesignTimeRectangle="240, 320, 200, 17" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' idx='1' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' name='JobName' type='text' class='' aaname='' /&gt;" Guid="7c1e6035-5ed3-4120-95bc-593e5923d455" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMwAAAAVCAYAAAAKEwEVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABzSURBVHhe7dMxDoAgAARBX83TaSgwFhpQo1w/k1x19W61tm5maxOMWbApmFKKmd02NnIFcxzA0xiNYOCHYCAgGAgIBgKCgYBgICAYCAgGAoKBgGAgIBgICAYCgoGAYCDwGswZjZnNGxuZgjGz7wnGbHmt75GXuIS9qp+gAAAAAElFTkSuQmCC" InformativeScreenshot="67ed2b609939b7962748189868fce6d7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click DSR" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory?REPOSITORY_NAME=DSREPO43&amp;SHOWREPO=2" CvElementArea="238, 372, 51, 19" CvTextArea="247, 376, 33, 10" CvTextArgument="Search" CvType="Button" DesignTimeRectangle="240, 373, 48, 17" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Search'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl tag='INPUT' aaname='Search' type='button' class='button' check:text='Search' /&gt;" Guid="b8f97a0f-36e9-45d3-8c06-8f06447149ff" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAVCAYAAAAJiM14AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE6SURBVFhH7ZdBbsMgEEU5HwfykmPABinJ3ifgJNzCu2yymPJthg61HUVOaxXaSF+x8WD/Nx8iR93vD+pJfQNdrzdyztEwDE0IXuFZMhSgy+VG4zjSNE1NCZ7hfQVkrduc0IKstWsgRLhV3ILg/R8ICkaRUixNPm7XvaVgSPu4fW1Hx4DSg5QJn+fRk9aeoqz5Dp0G9BQgkCnJGQp5vEo0z41ep/vonHAkr7kmJw4gk5TnvQJ3DAgCFBsUSw7GTRA1s/lAgccmGF/qZ6BsEscldV4B+ObGvbgKjgNVQipIQ3aZlVOCuS8NAATDy+OiasmlZ/wUkOzsIoAsxquEWOhu2XN1QhKo3JPTOAsIqn/lJITcQ0mzCTmWIMwCUqeys4fOAvqt+htAbb/LuTVQd2/bUBf/h6izT2dARB8h3fqfZlqoIAAAAABJRU5ErkJggg==" InformativeScreenshot="7ae4ccac41c1319303920fc5633f9ae6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Trace" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_18" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobHistory" CvTextArgument="Trace,Monitor,Error,Performance Monitor" CvType="Text" DesignTimeRectangle="1072, 438, 28, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Trace'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Trace' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Trace' tag='A' type='' class='' check:text='Trace' /&gt;" Guid="f8adfbf6-28b5-4151-a8d6-aa75fcc332bf" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADZSURBVEhL7ZMxDoMwDEVzwJzKN4nUg+QkFkiIgYWNhcGNQ+N+CqoQok2HDn9xbOf5O3HTNEtN/QF+CCB24lyzo04iFFytXQciNeLDuIl/QocAOLTiqBNKjuQ49+LBJcvFuO+Fsb7EabC+quMAsAqOgzXPq8uXjRL8s8562LnmLzkUH7VJxwFgoqzNtENyqJXAkJO0mr4IXDgFoOfmiE34BuDFdtRpALR6OduuIF+cf1cBW+eozq0AviwFXUV5H+rCEl+9GVwDuBHJ7QN8TXyrC8ChMoCqMsAsd0HhRoB75+rtAAAAAElFTkSuQmCC" InformativeScreenshot="8167eb86e9ccf071836872f9350d21db.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="2" DisplayName="Click Job Error" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_19" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="http://azbidscal:8080/DataServices/servlet/AwBatchJobLogs?HISTORY=%2FDataServices%2Fservlet%2FAwBatchJobHistory%3FREPOSITORY_NAME%3DDSREPO43%26JobName%3DFACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS%26JOB%3DAll%2Bbatch%2Bjobs%26GROUP_TIME_RADIO%3DLAST_EXECUTION_RADIO%26DAYS_INTERVAL%3D1%26FROM_DATE%3D%26TO_DATE%3D%26ACTIVE_VIEW%3DBatch%2BJob%2BStatus&amp;ObjectKey=1132&amp;REPOSITORY_NAME=DSREPO43&amp;JobName=FACT_SD_VENTAS_COMERCIAL_FOREPLAN_LACTEOS&amp;JobServer=AZBIDSCAL%3A3500&amp;SHOWREPO=&amp;ACTIVE_VIEW=Job%2BTrace%2BLog" CvTextArgument="Job Error Log" CvType="Text" DesignTimeRectangle="432, 244, 65, 12" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Job Error Log'" FullSelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Job Error Log' class='unselectedTab' /&gt;" FuzzySelectorArgument="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl aaname='Job Error Log' class='unselectedTab' tag='A' type='' check:text='Job Error Log' /&gt;" Guid="f1dfec62-d422-402d-b183-49f082b0106e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAAAQCAYAAABAzrJtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVFhH7ZQ9ksIwDIW5aw6RC9Cp4gJp01HvTGboGMp0OxyAkjtoLfkHRcgmZIGCuHgFsqQnf1bYXC5XrLrpdPrFCsVQhWKoQjFkQDlj326x7c8qLjR02LR7HK2zqHGPbbPFRqnYd6EGcL3haJ4t0Zuh7LAfjbMX6/NQCEB86WjMUDoEl8dxC1AJiqyHH/YDIJ+Q/8hTAchD8XfxvcQsYovZ180v68pQJhcT8TA0DCou+2Q+H67h+mnfdKmip7iYUA7KJM71HQ5qXs55Cgq/zm0Lxn7nTZKBioffrEebkuoV1JmeUjYU39c/HOmIQPMc1FzBT9YGKNQg8zozBvxSKL6xH4yKQ7N/fz4LoBQ9n4Gi4ql+6sc5OSgRBn/7Lin9cQYALGUA1FDnR/HlwrkU5ZagkAqeWSjSw0k+mI+JBxKzzfyjXZesLVshFLk9pPvtW/2mWKpQ7nTFP+1t/C2DpQ6aAAAAAElFTkSuQmCC" InformativeScreenshot="59cbd7c2d3be6d57b6718e3b2ddc68d1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'TD'" sap:VirtualizedContainerService.HintSize="530,139" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0dcea689-e306-4f0d-b994-ede50110c2b9" InformativeScreenshot="b1ee0a8ef27221a7983a708bc8722d68" Selector="&lt;webctrl name='AvailableReports' tag='FRAME' /&gt;&lt;webctrl class='JCActaHTMLTable' idx='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[vSrErrorJob]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <If Condition="[vSrErrorJob = &quot;Empty file received.&quot;]" sap:VirtualizedContainerService.HintSize="530,549" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign out_BooEntryModule" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[out_BooEntryModule]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign out_BooEntryModule" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[out_BooEntryModule]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </Sequence>
+                  </Switch>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="-8, -8, 1936, 1066" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAmfSURBVGhD7VhpUFTZFbacKv9Z/lMTMlqZqRqjgxvOKDiCMgo0NjR0NygBAYEGZO3GjYBCRhEMisoiS2tQi9GJyIhb1EFZXEAZWRo1bhO1EvdxwVSMIpb65Z7zHg0oDZjKSFnFV3Xr9bvv9X3nu+ec79x7BwjgA28D8KGin0Bfo59AX6OfQF/jvRBoaWmBXq/H4cOH8erVK7n33XDhwgXExsbiwYMHco+E90LgypUrGD3qMwwaNAghISF4+PCh/KRnvHz5EmvXruX/Wv36V6irq5OfSHgvBPbv34/Vy4Mxftzn/EGFQoHHjx/LT7vH0qVL+T8jR47AyvhAlJaWyk8kvBcCBQUFqNgRiz8lhbR9ECkpKUzi/PnzOHHiBI4cOYJDhw6hvLwc1dXVuH79OrZv325+P0Hvx2Pk5+fLo0qQn/+yBFJTU3Gq1IBnjWHwcJvJHx08eDAmjB8Hpasjgv088PFvrLhf4+GM0AA1948ePYr77Gwnofl0GI+xevVqeVQJ9Fy0X5ZAQkICqr834Hm9D+6fisChIgMu/KDHfxrC0doYhJZ6X6xfqcNHH32EG1VReNEYiBZTOP51JgpNB/W4eTyW/3t8lwGJiYnyqBLeiQCpyb1793Dnzh08ffoU165dQ3Z2Nnbu3Im7d+/Kb72NtLQ0VP5Fj9YGfzw3SQa3Nvjh3GEDqor1wjPB+Klcj5hQbzxtCJHeMUlXeo9IEimaBJqMjugVgatXryI+Ph6+vr6sIgsWLEBkZCSsra3bBsDQoUOxYsWKLpNz8+bN2L05VjKmScctLz0cmzMisH1jDHbmixkWxt48Hm1+LhnvL8jpBJlQ/n2yRI9Vq1bJo0rokcDZs2dha2uLrKws3L9/n2Xt9evX7AGlUmkm0Nbc3NzeIrF3714UrAlHS51GGBaAu9Ux+C5P8sjDmmCkJ+s4P2immYC43q+ORHFBDNatCMW1Sj2HUFmRHrm5ufKoEuTvdk2AZp4kr76+Xu7pDFIQcqlKpcK0adPg7OwMnU7Hut8RjY2NsP78dyjKjsLPp6IkIymchFE/nwzFhpRQEVbz2EPU13xah+zUUJzZp+c8IHLUv3VDJPbs2SOPKqFbAhQyO3bskO8sg6pra2sre6cr3L59mxWFQuWn8jiO54tlBhTlRCMnLQw6f0/sMsZyONF1WZw/4iLm4vtNMbhUJoVX1c5YVqNz587Jo0qwSODixYvw9vbG8+fP5Z53Q3NzM/bt24eoqAhoPVxhM3GsCAk9/l0XzgaRJ4gMESj9cwz+XmHA5SN6XDlqwKqEIPy4NxZ/OxyLezXRTPhxbSR8fbw4dDvCIoHdu3dj/fr18l3vQWqUmZkJG5sJWBDghtIMFZo2jcFKgxpqlTMei5AgAm2NQuVBTQT/lkLLj0PtaoVIaPGbjH9YG4Gs1HDExcXJX2mHRQJUBbds2SLf9QyK+6SkJAwbNowHnT9HgXPGUWx806ZRKMt0hsssezGjQvtlabx9MhouTtORvDgA34pwokaGfj1jKo5+ZzAToHxJWuSPiooK+WvtsEiAkmXdunXynWVQXUhOTsZ46zH4drUaybEaHnT4sKE4lmvPBH7IckL6Ei0m2YzjqrstMwr/FMWJSJgOxmH5wgAOL4pzWjLs2yKeCW80n45ib5AS2UycwJ6l0O4IiwRoRrVarcUcoH5alyidHRER6M4GF6erYMr7LUrWClUSCZeTpEFT/ieCgCtSF3khIdITn4wcKWpAhFRdKWzELN88HsnEFLMcuLCR4tAzyhNKbLXKieuP0WhkWe8IiwRIVUjna2tr5Z520KwHBwdD6+6Imnw7DpFda9yRslCLuvwv+L46356JNG0ay+GzNl6LnOUahM2bjal2X+DOyUgOD5LItGWSylDCUqjU7onjsHlSH4ZEwzx4eXmhpKQEhYWFvfcAYdu2bW8lTmVlpZipGXB3mY6guS7CwAloMI7D2YLPUF8wiQnQlfqo0T1diZTJKN7Jt0Gwjyv2Fy3k2aclAykTFzHRntTrONGJwKNTodAFzeWVqSV0S4B0PTAwEDU1NXy/detWaFUzcWyjozBmPMc8eYDawQ2z0WiUjO+ukUfKs6djxrTJKNmk53WRWYHamiB2tzoCft7KLhO3I7olQDCZTExi8eLF7P4f8yQjyFi6UpISkYVhHnzfldFvNnqvUpBQKx1RmCmvkcgDsvH/qIyGh7sLDhw4IFthGT0SIFACUSGqzf9SzLy1MOJLszEklWuWenGj3x0N7a4R8RO5X2HW9ClIWhwktJ7Cxk8UMIPwji3Kysrkr3ePHgkUFxcj0EeB+T4unKQUyx1bQ64V/qhXY8sqT1acttjvTTjRZJzKs4M+RIWZDnYIC9JgxIgRFtdeXaFbAlQLyM1n8kSi5o+Br8aJjS1MUSN7mRZZQlWMKzTQuM1gD5Den8h16JS4UiGjRJ/YJYm290rWKLEuXs1k3tw2dgeLBChxnR2nCoPs2NVJMWp4a1W8XJb/ZG4DBw7kI49liQkICvCHl4cCQb6z8Y1Bi6I0T1TkfN2B0IQuvWMyjhbXsULZFFxDjMbekZBt6EyAFmKuCiehFo6ozHHADHs7nhXakVGjpG4zvq1VVVXxf2mv8OzZM1y+fJlVKywsDLZTJsPfywUF36hxNGsWGgvGycsM8ky77JZlO2N3hlL0j0G4v5KXMz1B/n5nAkuWLEHhSg0rhdJlJitRR5C8ZmRkdCJA20ZLINJUQamSBgcFwlfrgg2JGkFGqiPkGZJl8gAZfyhTiUBvF3w1xYYXld1B/n47AZrpuFBPNIhZUcycimPHjslP3gbttIYPH86DWFlZcfLdunWrxzOfGzduoKioCAH+8zD/966cU1S5ySsmkStUUyiXSO2ig1V8omcJnQiQAVRhyaWk7bTH7Qlk8Jw5c3ggygW6DhkypMcC1IZLly4hPT0dytlOnDPl2U6iqn/KnqB6QYKg83PjvUVXMBOg2KXY/ut6pViQfcyFqbdyRjFPK1Lafnp4eMDe3p4Ps94FT548wcaNG/msKCFSw4lPJGj5QZXeS+wl6OCLdncdF5hmAuSmxCg16zrFZJCPEo8ePZJf6xk0AW+2/wVEhEJT7enB4UPhZDJ+iprcyVyHEqO0CJonFoY5OTxxZgIODg5C+lyxLFqDJeGeYu0+/p0OYf/fePHiBR8xUlTQzo4iQ5LhUSzDGX/wwqJFi9oJNDQ0cKMTBLqS8hDDvgZ5kpb0dBY1x1OBEF93hPl7isl2402OmcCHin4CfY1+An2NfgJ9DTOBD7cNwH8B48NCtMHNsmcAAAAASUVORK5CYII=" InformativeScreenshot="738643b84c95b438ec84714d129e5723.jpg" Selector="&lt;html app='chrome.exe' title='Data Services Management Console' /&gt;" Title="Nuevo Telecrédito" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="714,273" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Exception" sap:VirtualizedContainerService.HintSize="416,203" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,115" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Mensaje Excepción &quot; + exception.Source + &quot; - &quot; + exception.Message]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;¿SAP_BI_IngresarModulosDataService? &quot; + out_BooEntryModule&#x9;.ToString]" />
+      </TryCatch.Finally>
+    </TryCatch>
+  </Sequence>
+</Activity>

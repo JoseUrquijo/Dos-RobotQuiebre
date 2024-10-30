@@ -1,0 +1,1076 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="BCP_DescargarArchivoMovimientos" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_BooAplicarFiltros" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="in_vStrTipoProceso" Type="InArgument(x:String)" />
+    <x:Property Name="in_vStrGerencia" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1181,16114</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>BCP_DescargarArchivoMovimientos_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Core.Activities.SAP</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="SAP_BI_AplicarFiltroInformeFinal" sap:VirtualizedContainerService.HintSize="867,15969" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch SAP_BI_AplicarFiltroInformeFinal" sap:VirtualizedContainerService.HintSize="805,15881" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="767,15243" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="705,124" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Se deben de aplicar filtros por genrencia en la diferencias&quot;]" />
+          <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: SAP BI Launch Pad" sap:VirtualizedContainerService.HintSize="705,14926" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="50578787-3f80-485e-9440-4c4ad5cac324" Version="V2" WindowResize="Maximize">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="671,14677" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="609,14587" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+                    <ui:IfElseIf.ConditionBlocks>
+                      <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                        <ui:IfElseIfBlock BlockType="If" Condition="[in_vStrTipoProceso = &quot;HC01&quot;]">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="558,7219" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,120" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;El filtro debe ser por heladerias&quot;]" />
+                              <Sequence DisplayName="Reporte HELADERIA" sap:VirtualizedContainerService.HintSize="496,3390" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Reporte 1" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_57" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="d0e308a21b3e8141f58a6eeb62fe72b9" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.TabStrip' /&gt;&lt;webctrl ui5-class='sap.m.TabStripItem' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:04" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_8" />
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Quitar Filtros" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_47" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="52b5e7fb65b8b98cb17226c6e3980abb" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Reset all input controls to their default value' aaname='Reset all input controls to their default value' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_14" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="294, 261, 168, 41" CvTextArea="321, 283, 37, 11" CvTextArgument="Values" CvType="Button" DesignTimeRectangle="295, 262, 168, 38" DesignTimeScaleFactor="1" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="4ecc290c-1260-4be8-b47a-8f79b31c9adf" ImageBase64="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" InformativeScreenshot="4a55e75d9fa42fe354e5cff801d01f6a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NCheck_9" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" Action="Check" DelayAfter="2000" DelayBefore="2000" DisplayName="Check HELADERIAS" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Check_21">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="c45c36204f43bf401ec327016a62b6d4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl idx='5' ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_49" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_9" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Ingresar al filtro de codigo&quot;]" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="472, 262, 125, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="53f9ad38-48df-4912-8bba-db86f93f4cf6" ImageBase64="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" InformativeScreenshot="2fe1e340792a40d03f87719d815b6705.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NCheck_10" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[in_vStrGerencia]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[in_vStrGerencia.Replace("HC01","RETL")]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,250" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrGerencia]" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check HELADERIAS" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Check_22">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="ba9a535d013c75ba99da3a2ba11af6bd" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_51" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_12" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_15" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="204, 262, 80, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="dcb69318-18a8-444e-8782-2b77cbb1f47c" ImageBase64="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" InformativeScreenshot="20c2984f0c5eeb14e3c20e179c603f82.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,250" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="COLONES" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAP.M.TEXT  __text934-_...'" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_61" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3c2a30e8-0c86-4e76-8ceb-4f37bf10ee03" InformativeScreenshot="221a8bc159168bc905175effb15cf7d4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-class='sap.m.Text' aaname='COLONES' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="434,130" sap2010:WorkflowViewState.IdRef="Click_62" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                              </Sequence>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,120" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Se debe agregar los mismos filtros para la hoja de ORGANIZACIÓN&quot;]" />
+                              <Sequence DisplayName="Organización filtros HELADERIA" sap:VirtualizedContainerService.HintSize="496,3501" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAP.M.TABSTRIPITEM  __i...'" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_52" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="469d0364beb94d1d34155dd43c84ed1b" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.TabStrip' /&gt;&lt;webctrl ui5-class='sap.m.TabStripItem' ui5p-text='Report por Organización' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_10" />
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Quitar Filtros" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_58" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="52b5e7fb65b8b98cb17226c6e3980abb" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Reset all input controls to their default value' aaname='Reset all input controls to their default value' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_15" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="294, 261, 168, 41" CvTextArea="321, 283, 37, 11" CvTextArgument="Values" CvType="Button" DesignTimeRectangle="295, 262, 168, 38" DesignTimeScaleFactor="1" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="4ecc290c-1260-4be8-b47a-8f79b31c9adf" ImageBase64="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" InformativeScreenshot="4a55e75d9fa42fe354e5cff801d01f6a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NCheck_11" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check HELADERIAS" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Check_23">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="c45c36204f43bf401ec327016a62b6d4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl idx='5' ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_54" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_11" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;Ingresar al filtro de codigo&quot;]" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="472, 262, 125, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="53f9ad38-48df-4912-8bba-db86f93f4cf6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIEAAAAqCAYAAACUezh9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAeYSURBVHhe7ZrXcxRHEMb5n3igeKBMFQaXwBgMmIxBQJExUeQgwDIZY3KULQuDiSZaBoqcwQQhBBIISSByENGBp7Z+XdVXo2PP2tsDA755+GpvZ3pme2a+7umZvnqFldXikd6o9+TlK/FIb3gSeHgSeHgSeNTAk8DDk8DDk8CjBp4EHqmR4M7Dp7IyN09atW4t9evX12femnVyv/pFoHwYHDxyQrJGj5W7j57J1Yoqyc1bI5W37gfKpori0usycfIU+ahxY2nQoIH06t1H9h06KtUv/g6Uf5dgXjZt3SEPn/4RWJ8KIpPg9oMnMmbcBOme2VMnjoXi2aVrN5k1Z15kIrgkOPn7Be2PxQqSTQXniq7I523aSPbUr+Xi5WtSduO2ErhJk49l3YbN7x0Rlq3MlclTpqVkYIkQmQRr12+S7j0y5VrlrVrlTG72tJzI1uuSIKjexfmiEvlq6LCkv0XffGP2vPm1LIuF37hlm/y6e9976Q3eFiKR4N7j5+oFVv+QH1jvoqSsUkZmjZaGDRuq282ZPrPWop06W6humO2EJ4w3Ely4VCoDBg5SeRZlz/5D0rFTZ5Vt8WlL6dGzl5Lm8fO/VH7J8lXStGkzde19+w3Qvl1dDFh+h46d5PS5i4H1LrC8Vd//qP0yBnQrr7qrdejHd5auWK1jQ5e65BnP9l27pd0X7XUcw0dkxeoZx7adv8XqGOuhoyd17Bjd7Lnfqhxj5RsZGc1j81ZYfFXroiASCViUrt2+1EEH1Rtu3H6gk7R46QpVnHdcmrk13DzunoE/ePJSB4J3CSIBsnzzwJHjOilnzhdJy89ayeHjp/UdAiBbcv2GWvf6Tb/oJAZtJehNX3V5EPrNzctXEuPxbPLHjp8Y0y+jeQuZMWuObieMqS55dGYxWXh0HTJsuM4P3yvYe0C3qMPHTqmhsb0uWrJc+3VJgP7TZ87WbzBWtjH6YYt29Q+LlEiAkkH1huOnz+miGtMB1kfby1fLZeuOAhkxcpQGmFbPRASRgIHD+Jt3Hqoc9chRXnX3kfTp27+WPrfuV8vgIUP1G1ZmoE2nzl1q6cUkY1WGRP0SrFKGN0E/+mELpC6MPKTnafV8F69ade+xBqmJvKtLgni48xRUXxdS2g6MwYnARA4dPqIWQ92JYGDfzJilbtBtk8gTQCg8AfJ4gMxevbWcejzO2cLiWD9GEr5hZYag7QB5+iEYxVrRg3cI65LDJUn85CcrD9APPStqynjuPXA4VufCJQFb7KTsqbrlWP9hPFsiRA4MN2/bKW3bttMJdctxiyh4qaRMPQHKYQ1W73qCDZu3vuYJ6DeIBLg9AjncJXs+p5Jjp85qG7NAvIj182+eAPc6fuLk1wJDQB/0z6IFWbaL+EVNVh4YCW7WtA3jCdg2kZs7f0HMuIL6TQaRSWBHxPYdOsrOgr3qWhk8Vk459bg4oncUZlErqu7JqDHjdD9j8rFiLJKFQha3migm4Dd1xALxC2d7N57hyrUKnaj8tetVl/jTiyHREZGAs1GjRkoC63fAoMFSdKVM+4UkS5atVB3iJz9ZeWAkYLzIWkyAYfAk3mAujQTmhbmfoU/mDZl34glA0GURgRADMhkWgUHa6WD+wsWqOHVMGtGvRcPs+QR4RP0Eke6k0Ybf5v7sexzpmAw3KseSIV9dETMkzBo1JnZZRBu2GfSFBMjQL+TIqInE7dRx4sx51T1oUZOVd0nANocntPkksOVERFsjAW3Q0eaMJ8Rj7lyPmwxSIsF/CaJ9FpkJYbIgyZbtu9STsLUEtfEIhw+GBPO+W6g3keZlsP6CPft1i0jk8j3C4YMhARGxuW7cIE8uWogRguQ9wuODIYHH24MngYcngUeKJCA448zP8YRo3co5XtlxhmMRWUX32Ag4E3PpwVnaLc/LX6v35ZwC3HID/drxzePNICUScDTjjDthUrbs3ncwVh6GBET0XKq4CR5u+Qj2uGl0ZV14Erx5pEQCLjaw3CMnzsRuASkPQwIsHYvnEsTKWHwycKXlVeoluMMH4yZMil2wuCSIJ4T7zmmCvAUXNlyo2KULF0h4LvqlHI9k7dMVkUnAVSYpUpI23JlzfDOrDkMCYItOX0YKiOXKUM6tJHkG3sOQgP7IDdjxka0KXdEPmURJmnRFZBKwgJYn552Moll1WBK4RGKh2FrYYpDl+hhrJVXLfb71HYYE5AK4g+c2kfyBAZ2pxwOQPOLdzWCmKyKRwKzW7vAN9seGsCQAWD4EIqYgEcKWQkKJxA738MhAgLpIgE60NxJwR+/+X8AFwShbGMmsBYuWxraxdEUkEgQFdSw+rt2sjQVhYSABqWU3XewCy2fvZkFYGMpw/dlTc3RxSByRbnZJYKlayEPyhO/gTUi88G0Ih1f56eeNaunXb95Rz0LOnuQOGT7a04Z/OSUiaLogEgkIpqblTH/NglgoPERxabmmmPEALACE6dd/YCx76II+4o+ZWDCnhGbNPtEsHKlocgfU8Vc0MpKkr/XvaJk9NfjjzymQzTxDfGBIu0fP/oz9GcW2C95Nl3RF5JjA4/8DTwIPTwIPTwKPGngSeHgSeHgSeNTAk8DDk8DjlfwDH4lHftA93NsAAAAASUVORK5CYII=" InformativeScreenshot="2fe1e340792a40d03f87719d815b6705.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NCheck_12" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[in_vStrGerencia]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[in_vStrGerencia.Replace("HC01","RETL")]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,250" sap2010:WorkflowViewState.IdRef="NTypeInto_6" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrGerencia]" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check HELADERIAS" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Check_24">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="ba9a535d013c75ba99da3a2ba11af6bd" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_56" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Delay_13" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_16" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="204, 262, 80, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="dcb69318-18a8-444e-8782-2b77cbb1f47c" ImageBase64="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" InformativeScreenshot="20c2984f0c5eeb14e3c20e179c603f82.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,250" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="COLONES" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAP.M.TEXT  __text934-_...'" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_63" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3c2a30e8-0c86-4e76-8ceb-4f37bf10ee03" InformativeScreenshot="221a8bc159168bc905175effb15cf7d4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-class='sap.m.Text' aaname='COLONES' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_64" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,111" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Se debe agregar los mismos filtros para la hoja de ORGANIZACIÓN&quot;]" />
+                              </Sequence>
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                        <ui:IfElseIfBlock BlockType="Else">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,7111" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,120" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;El filtro debe ser por CR01&quot;]" />
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,120" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;El filtro debe ser por heladerias&quot;]" />
+                              <Sequence DisplayName="Reporte 1 CR01" sap:VirtualizedContainerService.HintSize="450,3276" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAP.M.TABSTRIPITEM  __i...'" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_44" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="d0e308a21b3e8141f58a6eeb62fe72b9" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.TabStrip' /&gt;&lt;webctrl ui5-class='sap.m.TabStripItem' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:04" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_7" />
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Quitar Filtros" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_59" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="52b5e7fb65b8b98cb17226c6e3980abb" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Reset all input controls to their default value' aaname='Reset all input controls to their default value' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_16" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="294, 261, 168, 41" CvTextArea="321, 283, 37, 11" CvTextArgument="Values" CvType="Button" DesignTimeRectangle="295, 262, 168, 38" DesignTimeScaleFactor="1" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="4ecc290c-1260-4be8-b47a-8f79b31c9adf" ImageBase64="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" InformativeScreenshot="4a55e75d9fa42fe354e5cff801d01f6a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NCheck_5" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check PRODUCT" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Check_19">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="e5032215d4d00f0776b57e804fbdf8e4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl idx='8' ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_16" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,120" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Ingresar al filtro de codigo&quot;]" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="472, 262, 125, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="53f9ad38-48df-4912-8bba-db86f93f4cf6" ImageBase64="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" InformativeScreenshot="2fe1e340792a40d03f87719d815b6705.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NCheck_6" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,250" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrGerencia]" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check HELADERIAS" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Check_6">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="ba9a535d013c75ba99da3a2ba11af6bd" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_20" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="204, 262, 80, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="dcb69318-18a8-444e-8782-2b77cbb1f47c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFQAAAAqCAYAAAAtQ3xwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVxSURBVGhD7ZnZT9VHFMf9n3gwPNUXm2DTatW2oiKiVhS1IhZ3BCSIgFhiFWu1VkRwqaZYrGstbpUUolYtVlEEBWWRxa2LT6d+TjK/zL1c7PXeMSHNPHxzf7/ZfjOfOXNm5txR19oHxMudRg2+eCle7uSBOpYH6lgeqGN5oI7lgTqWB+pYHqhjxQy05sAhSUhIkNq640Py7j/sldlz5kr28pXS1fd0SP7bFt/k22cvNETMf5uKC+jYse9Kbn6B9Aw8D8ljIKNHj/ZA30QA/Tx7uWQsXCS//X47SH/85E/ZULJR8gvWe6BvIoCWbNwkWyq2S2VVTZB+p71TspZmy8HDtSFAb91t1wlITEyUd8aMkcKiYmnv7NE8JiRjwUL54ceTMvmjj9WV0Ma9ji7N73/2txw+clTGT5iglp8+L0OuNbcE3+QbFdt3aruorHyzLFqcGQDlO6SRR336Ydp2rbiAlpZ9IZcar2gHH/YOavrx0/VSuqlcB2OA4lOBsHXb18E7rsK4C4C+/8F4bY+B3mq9L4uXZGl502Zq2iyF2Dv4Qv32vPkLtOzA838UJn1gMml/V2WVgjNAD9XWaVsd3f2ajyEUFZfqajLjcaW4gQKSwQCWweatK5QLDU0hQMlLnZkWYhWNV67L9JQZcrPlngKdNj0lxHXQ/opVaxRCTm6+7N13MMjr7BmQzzKXyPlLjdLR1Sdz0+fLmXMXQ/JtCw2X3bdI+fEobqA8s+RZ+jf+uKtwsUC70zxnZi0NrBjZEBFL3rgA0z71216l8YsbCBdlqIP1X77WHNTlm9QxQJuu3lAXwpI3dUc0UIAArOKrHfLN7ipNs4FioVhjS1tHUD/cQocD+uCVBYZbqC0mD+u3LdQc2+gDFgzwqpoDuoLIt/tm6riSE6D4QQadNO69wFLsTrNsWaJsDLy3dXTLshWrAj/2OqCUx4emzEiVX369rOX5LS4tU4vHh7I6WBlsfMC0fSjvM2fNlrpjp3Rzw89SdkQDRWwUbCRmWYdbAQPh3ezy5V9uVdDk/RdQQBw5eiI4AUxJnionfqrXdMrSDpNj2ja7PCcNgH9fd0ySksZpXSx357d7NB9fa77nSjED9YosD9SxPFDH8kAdywN1LA/UseICypmQ4wpHEc57Jp1jUF5BoR557Ge7LmdLzq7msG1kbl0cd+x0I45qHMki5Y0ExQWUWw5nxTVr8+TkmbNBejRAOZcS+mu+3RqkcS7kisjNyi5r638NlJAaFkUwxI7eRAPU3HA4wJs0QHKL4aDOVZNw3YcTJ0ry1GnS0HRVy9hA+bUvF/Y7tyauw9yYuBCc+vmcfpOIFSuK6BbprBRT34ViBsqNaOXqHL1qcl/OXrYisLZogCID0L5CMknh5YBJqK+7/1lUQGlvdU6uBkVIxx3RV/pH/un680Ed14oZKDDopAFFvNFYW7RA7Ulh0LgP3AhwsSiiUVgRMtfQaIBev3lHLfuTKcnahhF9pgztEbPl3VxfXSkmoMaaTCjMyNzlowWKsEgmAx/MXye4DaASIeKXMnYbrwNKxMkAJTYwXFSejRA3RYBm85ZtgatyoZiARtpQAMnyZdYBsDZvnTx6/CTk2W7DCGj4OgbHIEkDyJxP0zVyjwXtqd4fYqEmVMe32MTwuYg2yKcc5av3f6f1Wx880qg+sdXKvfs0bkt9VgauZLjJjkUxAcWRFxQWDZlZljyWS9QI4PxNcbOlLXg20SVbkY5epO3YVan/qk6aNFmtCOsnn6gTUaWjx0/rJK7fUKIbD3+R7K6qDiw2fFOiXt/TvzTKnzZ7TuASeLf7E69i9qFekeWBOpYH6lgeqGN5oI7lgTqWB+pYHqhjeaBO9VL+Bdb29wfzen2cAAAAAElFTkSuQmCC" InformativeScreenshot="20c2984f0c5eeb14e3c20e179c603f82.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,250" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="COLONES" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAP.M.TEXT  __text934-_...'" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_65" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3c2a30e8-0c86-4e76-8ceb-4f37bf10ee03" InformativeScreenshot="221a8bc159168bc905175effb15cf7d4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-class='sap.m.Text' aaname='COLONES' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="388,130" sap2010:WorkflowViewState.IdRef="Click_66" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                              </Sequence>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,120" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;Se debe agregar los mismos filtros para la hoja de ORGANIZACIÓN&quot;]" />
+                              <Sequence DisplayName="Organización filtros CR01" sap:VirtualizedContainerService.HintSize="450,3387" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAP.M.TABSTRIPITEM  __i...'" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_45" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="469d0364beb94d1d34155dd43c84ed1b" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.TabStrip' /&gt;&lt;webctrl ui5-class='sap.m.TabStripItem' ui5p-text='Report por Organización' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:04" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Quitar Filtros" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_60" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="da331c1e-4174-4bda-9397-c78f5088e838" InformativeScreenshot="52b5e7fb65b8b98cb17226c6e3980abb" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Reset all input controls to their default value' aaname='Reset all input controls to their default value' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_17" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="294, 261, 168, 41" CvTextArea="321, 283, 37, 11" CvTextArgument="Values" CvType="Button" DesignTimeRectangle="295, 262, 168, 38" DesignTimeScaleFactor="1" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Organizacion de Ventas' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="4ecc290c-1260-4be8-b47a-8f79b31c9adf" ImageBase64="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" InformativeScreenshot="4a55e75d9fa42fe354e5cff801d01f6a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NCheck_7" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check PRODUCT" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Check_20">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="e5032215d4d00f0776b57e804fbdf8e4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl idx='8' ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_34" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,120" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Ingresar al filtro de codigo&quot;]" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="472, 262, 125, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Codigo Gerencia' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="53f9ad38-48df-4912-8bba-db86f93f4cf6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIEAAAAqCAYAAACUezh9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAeYSURBVHhe7ZrXcxRHEMb5n3igeKBMFQaXwBgMmIxBQJExUeQgwDIZY3KULQuDiSZaBoqcwQQhBBIISSByENGBp7Z+XdVXo2PP2tsDA755+GpvZ3pme2a+7umZvnqFldXikd6o9+TlK/FIb3gSeHgSeHgSeNTAk8DDk8DDk8CjBp4EHqmR4M7Dp7IyN09atW4t9evX12femnVyv/pFoHwYHDxyQrJGj5W7j57J1Yoqyc1bI5W37gfKpori0usycfIU+ahxY2nQoIH06t1H9h06KtUv/g6Uf5dgXjZt3SEPn/4RWJ8KIpPg9oMnMmbcBOme2VMnjoXi2aVrN5k1Z15kIrgkOPn7Be2PxQqSTQXniq7I523aSPbUr+Xi5WtSduO2ErhJk49l3YbN7x0Rlq3MlclTpqVkYIkQmQRr12+S7j0y5VrlrVrlTG72tJzI1uuSIKjexfmiEvlq6LCkv0XffGP2vPm1LIuF37hlm/y6e9976Q3eFiKR4N7j5+oFVv+QH1jvoqSsUkZmjZaGDRuq282ZPrPWop06W6humO2EJ4w3Ely4VCoDBg5SeRZlz/5D0rFTZ5Vt8WlL6dGzl5Lm8fO/VH7J8lXStGkzde19+w3Qvl1dDFh+h46d5PS5i4H1LrC8Vd//qP0yBnQrr7qrdejHd5auWK1jQ5e65BnP9l27pd0X7XUcw0dkxeoZx7adv8XqGOuhoyd17Bjd7Lnfqhxj5RsZGc1j81ZYfFXroiASCViUrt2+1EEH1Rtu3H6gk7R46QpVnHdcmrk13DzunoE/ePJSB4J3CSIBsnzzwJHjOilnzhdJy89ayeHjp/UdAiBbcv2GWvf6Tb/oJAZtJehNX3V5EPrNzctXEuPxbPLHjp8Y0y+jeQuZMWuObieMqS55dGYxWXh0HTJsuM4P3yvYe0C3qMPHTqmhsb0uWrJc+3VJgP7TZ87WbzBWtjH6YYt29Q+LlEiAkkH1huOnz+miGtMB1kfby1fLZeuOAhkxcpQGmFbPRASRgIHD+Jt3Hqoc9chRXnX3kfTp27+WPrfuV8vgIUP1G1ZmoE2nzl1q6cUkY1WGRP0SrFKGN0E/+mELpC6MPKTnafV8F69ade+xBqmJvKtLgni48xRUXxdS2g6MwYnARA4dPqIWQ92JYGDfzJilbtBtk8gTQCg8AfJ4gMxevbWcejzO2cLiWD9GEr5hZYag7QB5+iEYxVrRg3cI65LDJUn85CcrD9APPStqynjuPXA4VufCJQFb7KTsqbrlWP9hPFsiRA4MN2/bKW3bttMJdctxiyh4qaRMPQHKYQ1W73qCDZu3vuYJ6DeIBLg9AjncJXs+p5Jjp85qG7NAvIj182+eAPc6fuLk1wJDQB/0z6IFWbaL+EVNVh4YCW7WtA3jCdg2kZs7f0HMuIL6TQaRSWBHxPYdOsrOgr3qWhk8Vk459bg4oncUZlErqu7JqDHjdD9j8rFiLJKFQha3migm4Dd1xALxC2d7N57hyrUKnaj8tetVl/jTiyHREZGAs1GjRkoC63fAoMFSdKVM+4UkS5atVB3iJz9ZeWAkYLzIWkyAYfAk3mAujQTmhbmfoU/mDZl34glA0GURgRADMhkWgUHa6WD+wsWqOHVMGtGvRcPs+QR4RP0Eke6k0Ybf5v7sexzpmAw3KseSIV9dETMkzBo1JnZZRBu2GfSFBMjQL+TIqInE7dRx4sx51T1oUZOVd0nANocntPkksOVERFsjAW3Q0eaMJ8Rj7lyPmwxSIsF/CaJ9FpkJYbIgyZbtu9STsLUEtfEIhw+GBPO+W6g3keZlsP6CPft1i0jk8j3C4YMhARGxuW7cIE8uWogRguQ9wuODIYHH24MngYcngUeKJCA448zP8YRo3co5XtlxhmMRWUX32Ag4E3PpwVnaLc/LX6v35ZwC3HID/drxzePNICUScDTjjDthUrbs3ncwVh6GBET0XKq4CR5u+Qj2uGl0ZV14Erx5pEQCLjaw3CMnzsRuASkPQwIsHYvnEsTKWHwycKXlVeoluMMH4yZMil2wuCSIJ4T7zmmCvAUXNlyo2KULF0h4LvqlHI9k7dMVkUnAVSYpUpI23JlzfDOrDkMCYItOX0YKiOXKUM6tJHkG3sOQgP7IDdjxka0KXdEPmURJmnRFZBKwgJYn552Moll1WBK4RGKh2FrYYpDl+hhrJVXLfb71HYYE5AK4g+c2kfyBAZ2pxwOQPOLdzWCmKyKRwKzW7vAN9seGsCQAWD4EIqYgEcKWQkKJxA738MhAgLpIgE60NxJwR+/+X8AFwShbGMmsBYuWxraxdEUkEgQFdSw+rt2sjQVhYSABqWU3XewCy2fvZkFYGMpw/dlTc3RxSByRbnZJYKlayEPyhO/gTUi88G0Ih1f56eeNaunXb95Rz0LOnuQOGT7a04Z/OSUiaLogEgkIpqblTH/NglgoPERxabmmmPEALACE6dd/YCx76II+4o+ZWDCnhGbNPtEsHKlocgfU8Vc0MpKkr/XvaJk9NfjjzymQzTxDfGBIu0fP/oz9GcW2C95Nl3RF5JjA4/8DTwIPTwIPTwKPGngSeHgSeHgSeNTAk8DDk8DjlfwDH4lHftA93NsAAAAASUVORK5CYII=" InformativeScreenshot="2fe1e340792a40d03f87719d815b6705.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'Checkbox'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NCheck_8" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NCheck.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="CheckBox" DesignTimeRectangle="296, 342, 32, 32" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' tag='DIV' type='' class='sapMCb sapMLIBSelectM' aaname='' /&gt;" Guid="06a20e36-3a78-430c-8265-950be3380159" ImageBase64="" InformativeScreenshot="c54b66bccfa8aab2c9cec8c0a3754068.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NCheck.Target>
+                                </uix:NCheck>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,250" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="[in_vStrGerencia]" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check HELADERIAS" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Check_10">
+                                  <ui:Check.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eba8f712-45e0-4738-a436-4829f1a389b7" InformativeScreenshot="ba9a535d013c75ba99da3a2ba11af6bd" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-role='checkbox' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Check.Target>
+                                </ui:Check>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_38" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,122" sap2010:WorkflowViewState.IdRef="Delay_5" />
+                                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="388,189" sap2010:WorkflowViewState.IdRef="NClick_18" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvType="Button" DesignTimeRectangle="204, 262, 80, 38" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-tooltip='Moneda' tag='LI' type='' class='sapMLIB sapMLIB-CTX sapMLIBShowSeparator sapMLIBTypeActive sapMLIBActionable sapMLIBHoverable sapMLIBFocusable sapMCLI sapWiseFilterBarItemInner wingTestFilterBarItemInner' aaname='' check:text='unchecked' /&gt;" Guid="dcb69318-18a8-444e-8782-2b77cbb1f47c" ImageBase64="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" InformativeScreenshot="20c2984f0c5eeb14e3c20e179c603f82.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Buscar Gerencia" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,250" sap2010:WorkflowViewState.IdRef="NTypeInto_10" ScopeIdentifier="50578787-3f80-485e-9440-4c4ad5cac324" Text="COLONES" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="http://ocibibopd.cr.red.dospinos.com:8080/BOE/portal/2112211200/FioriBI/main.jsp?service=%2Fcommon%2FappService.do&amp;appKind=InfoView" CvElementArea="485, 307, 265, 28" CvTextArea="496, 314, 43, 13" CvTextArgument="Search" CvType="InputBox" DesignTimeRectangle="482, 305, 268, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'SAP.M.SEARCHFIELD'" FullSelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' /&gt;" FuzzySelectorArgument="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.SearchField' tag='DIV' type='' class='sapMSF sapUiTinyMarginBegin sapMBarChild sapMTBShrinkItem sapMFocus' aaname='' /&gt;" Guid="4bfbb738-9f49-44b5-aeb7-6a54d527fb88" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAkCAYAAABBlmUaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQTSURBVHhe7ZrbL2NRFMb9bfM+zzP/xDwSD41L69ohgkgoQoVkXB6QNCFkqBKDBy8Nb+IyLlGDMq6DNfmW7qY6B+2ZU9T5fsnKavfePe3L/vKttVoghBBiEwoIIcQ2FBBCiG0oIIQQ21BACCG2eVRApqamGAwGwzIMTwoIIYSkk5WAFBQUaJjXzMzM7s5ZCwghhNgSEEIIScUxB0J3Qsjb5vflH/kSmJIPnqFk4D3Ws8VxB0IBIeTtsrL1Sz76hiX4fSWxcg/eYx37dqADIeSdA3H45A89KhLP7VuRUwdyc3Mj4XBYfD6fFBYWSlFRkbS1tcne3l7ixMsxNDSkQYhb8X778Y/zSAf7OJctjjsQiEd/f7/U19fLxsaGHB8fa25ubpaFhQU981KcnZ1JQ0ODLC8vJ1YIcRfobxQHI8+6C+zjXKb9kJw5kN3dXamqqpL19XV9/5rgt/j9fs2EuJFY/FwbpchPkem5dBx3IGtra1JSUqJu4/b2VtfSOTw8lO7ubikuLtbypqenR87P73/49fW1TE9PJ8uf8vJyiUajugdH0dTUJMPDw7qP0uTu7k4dRm1trT7L4/HIzMyMri8uLkpjY6OEQiEpLS3V/Y6ODrm4uNDnEfLeyTsHgssZDAb1suLSopzZ2dnRCw0ODg6krq5OxsfH5fLyUt1BTU2NLC0t6T7EA5+ByEBMent7JRAI6GucLSsrUxHA66urK5mYmFCXgTIJZyKRiIyOjmopBYExYgbxQcZvwllC3EJe9UAAxAJCgctdXV2tYjI7O6vrg4ODGkZQIDgtLS161oqxsTHp6+tLOgo4jXg8rnvb29taLlkJgul/zM/PJ1ZEyyp8PhaLJVYIef/AXeTVFCYVOIHOzk51Erj4uPAoTVIDAoMyBY5kcnJSKisrdc3sw1WA9IkKRMe4k3Ss+h94zmPnCXnPhKM/9Y9jyKnAeZg/lX3+Gnr9Hkg6uKytra061oVTqKiosHQMZnrT1dWVdBhwCqY8sZqoQJQQVsCtYPJj+h1wMOi1oLwhxI2gv2H1T1TTQM1GRHLiQNDchNvY2trS8S0y+hW4+CcnJ3J0dKQOBGUJ+hcoc1DOrK6uJt0JSh00X/f39/WzEJDT01NLRwEHAreC0gTPn5ubk4GBgWT/I9Wt4BkYLeO7CCEPSRUX5EybqY46kM3NTZ16mPLD6/XKyMjIg6kHShVMVrCPSQqapnApuPRwB/gsor29XcUArsH0P1IdBcDkBvs4j4kOyhM0bK3cCvsfhDxNNiKSEwdCCMlvjIhkWso46kAIIe6ADoQQ8t845kAIIe7BcQdCCHEfWTsQozzMzMzMdCCEENtkLCAMBoNhFYZHBYQQQp6DAkIIsQ0FhBBiGwoIIcQ2FBBCiE1E/gLQOTd4bjVz4AAAAABJRU5ErkJggg==" InformativeScreenshot="ac704a6861417b7cbf08fd5ec48bdfa0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAP.M.TEXT  __text934-_...'" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_67" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3c2a30e8-0c86-4e76-8ceb-4f37bf10ee03" InformativeScreenshot="221a8bc159168bc905175effb15cf7d4" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-class='sap.m.Table' /&gt;&lt;webctrl ui5-class='sap.m.Text' aaname='COLONES' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2" DelayMS="2" DisplayName="Click All" sap:VirtualizedContainerService.HintSize="388,139" sap2010:WorkflowViewState.IdRef="Click_68" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9bc8db7-02f7-4be1-8873-88936184d863" InformativeScreenshot="5d795c6dfc03a36c35cd575b637bb9c0" Selector="&lt;webctrl name='servletBridgeIframe' tag='IFRAME' /&gt;&lt;webctrl ui5-class='sap.m.Popover' /&gt;&lt;webctrl ui5-tooltip='Validate filter selection' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,111" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Se debe agregar los mismos filtros para la hoja de ORGANIZACIÓN&quot;]" />
+                              </Sequence>
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                      </sc:BindingList>
+                    </ui:IfElseIf.ConditionBlocks>
+                  </ui:IfElseIf>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="-8, -8, 1936, 1066" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHESURBVDhPjZK9axRBGMYHG4ugWMfKv8B0YmGf1jRaSDRgodjoQbSyMkELQdIYQcRSsREMFiqIbSBgYZWg+HXk2CS3l9uPudnbj5/vzO4m63HGDPx43533eZ7dnV112LUyMUFNtXW41TSO4gRAS9DC2FWLWV0tN6SOBvzXfBAqL6AoCnIHVS37pnDcE1jUi08elx+u8+zdFl87hkycWZa72hT+MyAX4Tcxzi61Uec3ON36xdMPfRIJ8ZeXDwywc2WSDJNmcsecz99Tpu70UBd9Tsz5fwWMwx1ibFJiMxRSBhLWjQqm7uao2RR1SbuQ0aB6zwUEOiHQQ0LB9rb6EjJ5E45eBXUFbjwf7JksVuPMdvUiw65ga933Y8PCG5i8Bcevw5E5ZJbszW2t7ErtBAO6gcHVfoX0jz/m8ipwah6OXaOcV9i+siu1tavxBFub3H5VcPYeLuSkvI7VeL24nPf0fkDHj+h0Sza7Mfb69Zph+lHBuftwZgEWV5B5zKYvc6eL9gPa26Fu74T8Ft5/0Tx4m8ihGWaWMi48gZfy+e2hOc12TaQru1I/vaAlJD+8wD1iOBiWP4ys1P5MocHOGlhtq3Qr9QdJ36nDW6DRVAAAAABJRU5ErkJggg==" InformativeScreenshot="653516540be857518fd2229f0f4e2955.jpg" Selector="&lt;html app='chrome.exe' title='SAP BI Launch Pad' /&gt;" Title="Nuevo Telecrédito" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+          <Assign sap:VirtualizedContainerService.HintSize="705,105" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[out_BooAplicarFiltros]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="771,273" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Exception" sap:VirtualizedContainerService.HintSize="416,203" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,115" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Error" Message="[&quot;Mensaje Excepción &quot; + exception.Source + &quot; - &quot; + exception.Message]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;¿Se aplicaron los filtros correctos por gerencia? &quot; + out_BooAplicarFiltros.ToString]" />
+      </TryCatch.Finally>
+    </TryCatch>
+  </Sequence>
+</Activity>
